@@ -7,7 +7,10 @@ public class weaponStore extends ItemStore {
         super(characters);
         this.weapons = weapons;
     }
+    weaponStore(){
+        super();
 
+    }
 
 
     weaponStore(Characters characters){
@@ -22,16 +25,17 @@ public class weaponStore extends ItemStore {
 
 
     public void selectWeaponsHintMenu() {
+        equalization();
         System.out.println("-------------------------------------------------------------------------------");
         System.out.println("Yeeeess, perfect choice to start with weapons. You know this job!!!");
-        if (characters.getName().equals("Fighter")) {
-            System.out.println("Hint: Your character is " + characters.getName() + ". Therefore you must choose a sword " +
-                    "that is used more effective by the Fighter");
-        } else if (characters.getName().equals("Tank")) {
-            System.out.println("Hint: Your character is " + characters.getName() + ". Therefore you must choose a shields" +
-                    "that is used more effective by the Tank");
-        } else if (characters.getName().equals("Healer")) {
-            System.out.println("Hint: Your character is " + characters.getName() + ". Therefore you must choose a wands " +
+        if (characters.ChosenChar.get(0).getType().equals("Fighter")) {
+            System.out.println("Hint: Your character is " + characters.ChosenChar.get(0).getName() + ". Therefore you must choose a sword " +
+                    "that is used more effective by the Fighter type");
+        } else if (characters.ChosenChar.get(1).getType().equals("Tank")) {
+            System.out.println("Hint: Your character is " + characters.ChosenChar.get(1).getName() + ". Therefore you must choose a shields" +
+                    "that is used more effective by the Tank type");
+        } else if (characters.ChosenChar.get(2).getType().equals("Healer")) {
+            System.out.println("Hint: Your character is " + characters.ChosenChar.get(2).getName() + ". Therefore you must choose a wands " +
                     "that is used more effective by the Healer");
 
         }
@@ -39,7 +43,7 @@ public class weaponStore extends ItemStore {
     }
 
     public void selectWeaponsMenu() {
-
+        equalization();
         System.out.println("\t1) Swords\t2) Shields\t3) Wands\t4)Exit from the game ");
         System.out.print("Which weapon type do you prefer? :");
         int selectionOfWeaponType = scanner.nextInt();
@@ -138,6 +142,7 @@ public class weaponStore extends ItemStore {
                 name = "Claymore";
                 price = 30;
                 damageSword = 50;
+
                 break;
             case 2:
                 weight = 5;

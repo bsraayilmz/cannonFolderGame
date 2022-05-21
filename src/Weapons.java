@@ -4,13 +4,14 @@ import java.util.Locale;
 public class Weapons {
     protected String nameWeapon;
     protected double damageLevel = 1;
-
+    protected double weight;
+    protected double moneyWeapon;
 
 
     public Weapons(String nameWeapon, double damageLevel, double weight, double moneyWeapon){
         this.nameWeapon = nameWeapon;
         this.damageLevel = damageLevel;
-        this.weight = weight;
+        //this.weight = weight;
         this.moneyWeapon = moneyWeapon;
     }
     public Weapons(){
@@ -36,8 +37,7 @@ public class Weapons {
         this.moneyWeapon = moneyWeapon;
     }
 
-    protected double weight;
-    protected double moneyWeapon;
+
 
 
 

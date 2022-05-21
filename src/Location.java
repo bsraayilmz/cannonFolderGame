@@ -27,8 +27,12 @@ public abstract class Location {
     public Location(Characters characters){
         this.characters = characters;
     }
+    Location(){
 
-
+    }
+    public void equalization(){
+        gamePlay.characters = this.characters;
+    }
 
 }
 

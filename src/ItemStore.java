@@ -9,7 +9,9 @@ public abstract class ItemStore extends Location {
     ItemStore(Characters characters){
         super(characters);
     }
-
+    ItemStore(){
+        super();
+    }
 
     // when char comes here, this is a true.
     public boolean takeLocation() {

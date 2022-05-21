@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class gamePlay {
     Scanner scanner = new Scanner(System.in);
+    int sure;
     public Characters characters = new Characters();
     private Items items = new Items();
     private Levels levels;
@@ -58,6 +59,9 @@ public class gamePlay {
         System.out.println("Which character do you want to use when playing? ");
         characters.chooseCharTable();
     }
+    public void chooseAgain(){
+        characters.charGeneralChoose();
+    }
 
     public void start(){
 
@@ -80,9 +84,28 @@ public class gamePlay {
 
         }
 
-    }
 
-}
+    }
+  /*  public void choosingOtherChar(){
+        while (true){
+            System.out.println();
+
+            System.out.println("Are you sure to select this character? ");
+            System.out.println(" 'I want to see other types.' --> enter 0");
+            System.out.print(" 'I'm sure, I want to choose other characters quickly...' --> enter 1\t:");
+            sure = scanner.nextInt();
+            if(sure == 0){
+                chooseAgain();
+            }
+            else if(sure==1){
+
+                }
+*/
+            }
+
+
+
+
 
 
 
