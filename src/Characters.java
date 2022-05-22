@@ -44,7 +44,6 @@ public class Characters {
         gamePlay gamePlay = new gamePlay();
         Scanner scanner = new Scanner(System.in);
 
-        if (ChosenChar.get(0).getType().equals("Fighter")) {
             System.out.println("You cannot add a fighter character in battle char list! ");
             System.out.println();
             System.out.println("Now, for the second char, which one do you add? ");
@@ -64,21 +63,25 @@ public class Characters {
                 System.out.println();
                 healerChoose();
                 System.out.println("Yeeeey, you completed char list. Well done :)");
+                System.out.println("Your characters that you choose ");
+                for (Characters characters : ChosenChar) {
+                    characters.printInfo();
+                    }
             } else if (charEntering == 2) {
                 healerChoose();
                 System.out.println("You cannot add a healer character in battle char list! ");
                 System.out.println();
                 tankChoose();
                 System.out.println("Yeeeey, you completed char list. Well done :)");
+                System.out.println("Your characters that you choose ");
+                for (Characters characters : ChosenChar) {
+                    characters.printInfo();
             }
-            System.out.println("Your characters that you choose ");
-            for (Characters characters : ChosenChar) {
-                characters.printInfo();
-                gamePlay.selectItem();
             }
+            gamePlay.selectItem();
         }
 
-    }
+
 
 
         public Inventory getInventory () {
@@ -275,24 +278,22 @@ public class Characters {
         }
         public void chooseCharTable () {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Our game has three main characters which are Fighter, Tank and Healer. You must choose all of them" +
+            System.out.println("Our game has three main characters which are Fighter, Tank and Healer. When fighting has to be one of them all characters" +
                     " in a game! ");
             System.out.println("Don't forget that all character type has four different character.\n" +
-                    "               Firstly which character type do you want to choose?");
+                    "               Firstly you need to choose fighter type :)");
             System.out.println();
-            System.out.println("When choosing a character, you must pay money to get other characters");
+            System.out.println("Hint: After choosing a character in one type, you must pay money to get other characters for the same type character!");
             System.out.println();
             charGeneralChoose();
         }
 
         public void charGeneralChoose () {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("If your selection is   Fighter--> please enter 1 ------- ");
-            System.out.println("                       Tank-->    please enter 2 ------- ");
-            System.out.print("                       Healer-->  please enter 3 ------- ");
+            System.out.println("FIRSTLY, PLEASE CHOOSE THE CHARACTER FIGHTER BY ENTERING 1! ");
             System.out.print("YOUR CHARACTER TYPE: ");
             setCharEntering(charEntering = scanner.nextInt());
-            while (charEntering < 1 || charEntering > 3) {
+            while (charEntering!=1) {
                 System.out.println("!!! Your selection is not valid. Please enter a value between 1 and 3 !!!");
                 System.out.print("YOUR CHARACTER TYPE: ");
                 setCharEntering(scanner.nextInt());
@@ -300,20 +301,13 @@ public class Characters {
             if (charEntering == 1) {
                 setType("Fighter");
                 fighterChoose();
-            } else if (charEntering == 2) {
-                setType("Tank");
-                tankChoose();
-            } else if (charEntering == 3) {
-                setType("Healer");
-                healerChoose();
             }
-
         }
         public void fighterChoose () {
             Scanner scanner = new Scanner(System.in);
             Characters characterFighter = new Fighter();
             System.out.println();
-            System.out.println("You want to start with choosing Fighter! Fighters are so excited:) ");
+            System.out.println("Fighters are so excited:) ");
             System.out.println();
             System.out.println("-----------------------------------------------------");
             displayInfoForFighter();
@@ -376,7 +370,6 @@ public class Characters {
             Scanner scanner = new Scanner(System.in);
             Characters characterTank = new Tank();
             System.out.println();
-            System.out.println("You want to start with choosing Tank ! Tanks are so excited:) ");
             System.out.println();
             System.out.println("-----------------------------------------------------");
             displayInfoForTank();
@@ -437,7 +430,6 @@ public class Characters {
             Scanner scanner = new Scanner(System.in);
             Characters characterHealer = new Healer();
             System.out.println();
-            System.out.println("You want to start with choosing Healers! Healers are so excited:) ");
             System.out.println();
             System.out.println("-----------------------------------------------------");
             displayInfoForHealer();

@@ -1,6 +1,6 @@
 public class weaponStore extends ItemStore {
 
-    Swords swords = new Swords("Swords", 2.0,5.5,20 );
+    Swords swords = new Swords(1, "",5.5,20 );
     Weapons weapons = new Weapons();
 
     weaponStore(Characters characters,Weapons weapons ) {
@@ -15,7 +15,9 @@ public class weaponStore extends ItemStore {
 
     weaponStore(Characters characters){
         super(characters, "Weapon Store");
-        selectWeaponsHintMenu();
+        System.out.println("------------------------------------------------");
+        System.out.println("");
+        weapons.displaySwordsInfo();
     }
 
     public boolean takeLocation() {
