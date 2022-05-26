@@ -17,6 +17,9 @@ public class Inventory {
     public Weapons getWeapons() {
         return weapons;
     }
+    public Inventory (Weapons weapons){
+
+    }
 
     public void setWeapons(Weapons weapons) {
         this.weapons = weapons;

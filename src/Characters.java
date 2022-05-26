@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Characters {
     protected String name;
-
+    SecureRandom secureRandom = new SecureRandom();
     public String getType() {
         return type;
     }
@@ -92,7 +92,7 @@ public class Characters {
             this.inventory = inventory;
         }
 
-        private Inventory inventory;
+        public Inventory inventory;
         int charEntering;
         int newCharEntering;
 
@@ -174,6 +174,7 @@ public class Characters {
 
         public void setWeapons (Weapons weapons){
             this.weapons = weapons;
+
         }
 
         public Clothes getClothes () {
@@ -204,7 +205,10 @@ public class Characters {
 
 
         public void displayInfoForFighter() {
+            weapons = new Swords();
+            int randomlySword = secureRandom.nextInt(0,3);
             Fighter cammy = new Fighter("Fighter", 1, "Cammy", 20);
+            weapons.displayInfoForAllWeapons();
             Fighter frost = new Fighter("Fighter", 2, "Frost", 30);
             Fighter harley = new Fighter("Fighter", 3, "Harley", 15);
             Fighter ling = new Fighter("Fighter", 4, "Ling", 50);
@@ -277,7 +281,6 @@ public class Characters {
 
         }
         public void chooseCharTable () {
-            Scanner scanner = new Scanner(System.in);
             System.out.println("Our game has three main characters which are Fighter, Tank and Healer. When fighting has to be one of them all characters" +
                     " in a game! ");
             System.out.println("Don't forget that all character type has four different character.\n" +
@@ -303,8 +306,14 @@ public class Characters {
                 fighterChoose();
             }
         }
+        public Weapons assignWeapon(){
+            System.out.println(" The first weapon before starting the game will come automatically! \n " +
+                    "After first level, you can take weapon from weapon store according to your character's money");
+            return weapons;
+        }
         public void fighterChoose () {
             Scanner scanner = new Scanner(System.in);
+            weapons = new Swords();
             Characters characterFighter = new Fighter();
             System.out.println();
             System.out.println("Fighters are so excited:) ");
@@ -318,11 +327,14 @@ public class Characters {
             int fighterEnter = scanner.nextInt();
             switch (fighterEnter) {
                 case 1:
+                    weapons = new Swords();
                     characterFighter = fighterArrayList.get(0);
                     System.out.println("Information of the character: ".toUpperCase(Locale.ROOT));
                     System.out.println(" \tType of the character: "+ characterFighter.getType()+" \tName: " + characterFighter.getName() + " \tStrength: " + characterFighter.getStrength() +
                             " \tVitality: " + characterFighter.getVitality() + " \tIntelligence: " + characterFighter.getIntelligence() +
-                            " \tMoney of character : " + characterFighter.getMoneyOfChar());
+                            " \tMoney of character : " + characterFighter.getMoneyOfChar() );
+                    characterFighter.setWeapons(weapons.chooseSwords()) ;
+                    System.out.println("Randomly weapon: " + characterFighter.getWeapons());
                     ChosenChar.add(characterFighter);
                     System.out.println("added in array ");
                     controlChar();
@@ -385,6 +397,7 @@ public class Characters {
                     System.out.println(" \tType of the character: "+ characterTank.getType()+" \tName: " + characterTank.getName() + " \tStrength: " + characterTank.getStrength() +
                             " \tVitality: " + characterTank.getVitality() + " \tIntelligence: " + characterTank.getIntelligence() +
                             " \tMoney of character : " + characterTank.getMoneyOfChar());
+
                     ChosenChar.add(characterTank);
                     System.out.println("added in array ");
 

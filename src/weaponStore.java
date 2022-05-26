@@ -17,7 +17,7 @@ public class weaponStore extends ItemStore {
         super(characters, "Weapon Store");
         System.out.println("------------------------------------------------");
         System.out.println("");
-        weapons.displaySwordsInfo();
+       // weapons.displaySwordsInfo();
     }
 
     public boolean takeLocation() {

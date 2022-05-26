@@ -1,7 +1,9 @@
+import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Locale;
+import java.util.Scanner;
 
 public class Weapons {
+    SecureRandom secureRandom = new SecureRandom();
     protected String nameWeapon;
     protected double damageLevel = 1;
     protected double weight;
@@ -17,24 +19,32 @@ public class Weapons {
 
     protected int ID;
 
-    Swords[] swordsList = new Swords[4];
-    Shields[] shieldsList = new Shields[4];
-    Wands[] wandsList = new Wands[4];
 
-    public void displaySwordsInfo(){
+    protected ArrayList<Swords> swordsList = new ArrayList<>();
+    protected ArrayList<Shields> shieldsList = new ArrayList<>();
+    protected ArrayList<Wands>wandsList = new ArrayList<>();
+    public void displayInfoForAllWeapons(){
+
+    }
+
+    public Swords chooseSwords(){
+        int randomly = secureRandom.nextInt(0,3);
         Swords swords1 = new Swords(1,"Swords1",10,20);
         Swords swords2 = new Swords(2,"Swords2",20,15);
         Swords swords3 = new Swords(3,"Swords3",30,25);
         Swords swords4 = new Swords(4,"Swords4",40,30);
 
-        swordsList[0] = swords1;
-        swordsList[1] = swords2;
-        swordsList[2] = swords3;
-        swordsList[3] = swords4;
+        swordsList.add(swords1);
+        swordsList.add(swords2);
+        swordsList.add(swords3);
+        swordsList.add(swords4);
 
-        for(Swords swords : swordsList){
-            swords.printInfo();
-        }
+        swordsList.get(randomly);
+        System.out.println(swordsList.get(randomly).printInfo());
+        return swordsList.get(randomly);
+
+
+
     }
     public void displayShieldsInfo(){
         Shields shields1 = new Shields(1,"Shields1",10,20);
@@ -42,10 +52,10 @@ public class Weapons {
         Shields shields3 = new Shields(3,"Shields3",30,25);
         Shields shields4 = new Shields(4,"Shields4",40,30);
 
-        shieldsList[0] = shields1;
-        shieldsList[1] = shields2;
-        shieldsList[2] = shields3;
-        shieldsList[3] = shields4;
+        shieldsList.add(shields1);
+        shieldsList.add(shields2);
+        shieldsList.add(shields3);
+        shieldsList.add(shields4);
 
         for(Shields shields : shieldsList){
             shields.printInfo();
@@ -57,19 +67,21 @@ public class Weapons {
         Wands wands3 = new Wands(3,"Wands3",30,25);
         Wands wands4 = new Wands(4,"Wands4",40,30);
 
-        wandsList[0] = wands1;
-        wandsList[1] = wands2;
-        wandsList[2] = wands3;
-        wandsList[3] = wands4;
+        wandsList.add(wands1);
+        wandsList.add(wands2);
+        wandsList.add(wands3);
+        wandsList.add(wands4);
 
         for(Wands wands : wandsList){
             wands.printInfo();
         }
     }
 
-    public void printInfo(){
+    public boolean printInfo(){
         System.out.println(" \tID: " +getID()+ " \tName: " + getNameWeapon()+ " \tWeight: " + getWeight() + " \tPrice of the " + getNameWeapon() + ": " + getMoneyWeapon());
+        return true;
     }
+
 
     public Weapons(int ID,String nameWeapon, double weight, double moneyWeapon){
         this.ID = ID;
@@ -123,5 +135,12 @@ public class Weapons {
         setNameWeapon(nameWeapon);
     }
 
+    public ArrayList<Swords> getSwordsList() {
+        return swordsList;
+    }
+
+    public void setSwordsList(ArrayList<Swords> swordsList) {
+        this.swordsList = swordsList;
+    }
 }
 
