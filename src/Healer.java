@@ -6,7 +6,7 @@ public class Healer extends Characters{
     int strengthLevelForHealer = secureRandom.nextInt(3,7);
     int vitalityLevelForHealer = secureRandom.nextInt(1,5);
     int intelligenceLevelForHealer = secureRandom.nextInt(6,10);
-    public Healer(String type,int ID,String name, double money){
+    public Healer(String type,int ID,String name, double money, Weapons weapons){
         setType(type);
         setIdChar(ID);
         this.name = name;
@@ -14,6 +14,9 @@ public class Healer extends Characters{
         setStrength(strengthLevelForHealer);
         setVitality(vitalityLevelForHealer);
         setIntelligence(intelligenceLevelForHealer);
+        setWeaponsRandomly(weapons);
+        inventoryHealer.add(weapons);
+
     }
     //to display all healer
     @Override

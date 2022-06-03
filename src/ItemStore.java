@@ -15,7 +15,7 @@ public abstract class ItemStore extends Location {
 
     // when char comes here, this is a true.
     public boolean takeLocation() {
-        System.out.println("You are in Item Store now. You can choose weapons and clothes here.");
+        System.out.println("You are in Item Store now. You can choose weaponsRandomly and clothes here.");
         return true;
     }
 

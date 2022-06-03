@@ -6,11 +6,6 @@ public class Fighter extends Characters{
     int strengthLevelForFighter = secureRandom.nextInt(6,10);
     int vitalityLevelForFighter = secureRandom.nextInt(3,7);
     int intelligenceLevelForFighter = secureRandom.nextInt(1,5);
-    Weapons weapons = new Swords();
-    ArrayList<Inventory> inventoryOfFighter = new ArrayList<>();
-    ArrayList<Weapons>weaponsOfFighter= new ArrayList<>();
-
-
 
 
     //for the fighter to be selected for the first time
@@ -33,9 +28,9 @@ public class Fighter extends Characters{
     public void printInfo() {
         super.printInfo();
         System.out.print( " \tStrength Level: "+  strengthLevelForFighter + " \tVitality Level: " + vitalityLevelForFighter+
-                " \tIntelligence Level: " + intelligenceLevelForFighter  + "\n");
+                " \tIntelligence Level: " + intelligenceLevelForFighter  + "\n" +calculateHealthPoint(strengthLevelForFighter,vitalityLevelForFighter,intelligenceLevelForFighter));
             }
-    public Fighter(String type,int ID, String name, double money){
+    public Fighter(String type,int ID, String name, double money, Weapons weapons){
         setType(type);
         setIdChar(ID);
         setName(name);
@@ -43,25 +38,13 @@ public class Fighter extends Characters{
         setStrength(strengthLevelForFighter);
         setVitality(vitalityLevelForFighter);
         setIntelligence(intelligenceLevelForFighter);
-        //setWeapons(assignWeapon());
-
-
+        setWeaponsRandomly(weapons);
+        inventoryFighter.add(weapons);
     }
     public Fighter(){
     }
-    @Override
-    public Weapons assignWeapon(){
 
-        super.assignWeapon();
-        System.out.println(weapons.getSwordsList().size());
-        setWeapons(weapons.getSwordsList().get(secureRandom.nextInt(weapons.getSwordsList().size()-1)));
-        return weapons;
 
-    }
-    @Override
-    public Swords getWeapons () {
-        return (Swords) weapons;
-    }
 
 
 

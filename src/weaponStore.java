@@ -17,7 +17,7 @@ public class weaponStore extends ItemStore {
         super(characters, "Weapon Store");
         System.out.println("------------------------------------------------");
         System.out.println("");
-       // weapons.displaySwordsInfo();
+       // weaponsRandomly.displaySwordsInfo();
     }
 
     public boolean takeLocation() {
@@ -29,7 +29,7 @@ public class weaponStore extends ItemStore {
     public void selectWeaponsHintMenu() {
         equalization();
         System.out.println("-------------------------------------------------------------------------------");
-        System.out.println("Yeeeess, perfect choice to start with weapons. You know this job!!!");
+        System.out.println("Yeeeess, perfect choice to start with weaponsRandomly. You know this job!!!");
         if (characters.ChosenChar.get(0).getType().equals("Fighter")) {
             System.out.println("Hint: Your character is " + characters.ChosenChar.get(0).getName() + ". Therefore you must choose a sword " +
                     "that is used more effective by the Fighter type");
@@ -79,9 +79,9 @@ public class weaponStore extends ItemStore {
                 weapons.setNameWeapon("Shields");
                 System.out.println("Your Money: " + characters.getMoneyOfChar());
                 System.out.println("   \tSHIELDS TYPE       DAMAGE        WEIGHT        PRICE");
-                System.out.println("1) \tWooden Shelo        " +  /*weapons.calculateDamageLevel()*/ "            1            25");
-                System.out.println("2) \tBouche              " +  /*weapons.calculateDamageLevel()*/ "            3            35");
-                System.out.println("3) \tMetal Aspis         " +  /*weapons.calculateDamageLevel()*/ "           5            45");
+                System.out.println("1) \tWooden Shelo        " +  /*weaponsRandomly.calculateDamageLevel()*/ "            1            25");
+                System.out.println("2) \tBouche              " +  /*weaponsRandomly.calculateDamageLevel()*/ "            3            35");
+                System.out.println("3) \tMetal Aspis         " +  /*weaponsRandomly.calculateDamageLevel()*/ "           5            45");
                 System.out.println("4) I don't wanna buy a sword. ");
                 System.out.println();
                 int chooseShield = scanner.nextInt();
@@ -103,14 +103,14 @@ public class weaponStore extends ItemStore {
                 weapons.setNameWeapon("Wands");
                 System.out.println("Your Money: " + characters.getMoneyOfChar());
                 System.out.println("   \tWANDS TYPE        DAMAGE          WEIGHT        PRICE");
-                System.out.println("1) \tAmethyst           " +  /*weapons.calculateDamageLevel()*/ "              2              40");
-                System.out.println("2) \tQuartz             "  /*weapons.calculateDamageLevel()*/ + "             3              50");
-                System.out.println("3) \tDiamond            " +  /*weapons.calculateDamageLevel()*/  "            4              60");
+                System.out.println("1) \tAmethyst           " +  /*weaponsRandomly.calculateDamageLevel()*/ "              2              40");
+                System.out.println("2) \tQuartz             "  /*weaponsRandomly.calculateDamageLevel()*/ + "             3              50");
+                System.out.println("3) \tDiamond            " +  /*weaponsRandomly.calculateDamageLevel()*/  "            4              60");
                 System.out.println();
 
                 break;
             case 4:
-                System.out.println("Return weapons menu");
+                System.out.println("Return weaponsRandomly menu");
                 changeYourWeaponSelection();
                 break;
             default:

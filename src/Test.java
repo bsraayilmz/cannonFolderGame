@@ -6,10 +6,6 @@ public class Test {
         gamePlay gamePlay = new gamePlay();
         gamePlay.logIn();
         gamePlay.selectChar();
-
-
-
-
     }
 }
 

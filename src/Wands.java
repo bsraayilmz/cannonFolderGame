@@ -6,11 +6,20 @@ public class Wands extends Weapons{
     }
 
     @Override
-    public boolean printInfo() {
+    public void printInfoForWeapons() {
         System.out.println();
         System.out.println("Information of the Swords: ".toUpperCase(Locale.ROOT));
-        super.printInfo();
+        super.printInfoForWeapons();
         System.out.println();
-        return false;
+    }
+    public Wands() {
+
+    }
+
+    @Override
+    public void displayInfoForAllWeapons() {
+        for(Wands wands : wandsList){
+            wands.printInfoForWeapons();
+        }
     }
 }

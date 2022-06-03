@@ -1,6 +1,5 @@
 import java.security.SecureRandom;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Weapons {
     SecureRandom secureRandom = new SecureRandom();
@@ -22,13 +21,30 @@ public class Weapons {
 
     protected ArrayList<Swords> swordsList = new ArrayList<>();
     protected ArrayList<Shields> shieldsList = new ArrayList<>();
+
+    public ArrayList<Shields> getShieldsList() {
+        return shieldsList;
+    }
+
+    public void setShieldsList(ArrayList<Shields> shieldsList) {
+        this.shieldsList = shieldsList;
+    }
+
+    public ArrayList<Wands> getWandsList() {
+        return wandsList;
+    }
+
+    public void setWandsList(ArrayList<Wands> wandsList) {
+        this.wandsList = wandsList;
+    }
+
     protected ArrayList<Wands>wandsList = new ArrayList<>();
     public void displayInfoForAllWeapons(){
 
     }
 
-    public Swords chooseSwords(){
-        int randomly = secureRandom.nextInt(0,3);
+    public void displaySwordsInfo(){
+
         Swords swords1 = new Swords(1,"Swords1",10,20);
         Swords swords2 = new Swords(2,"Swords2",20,15);
         Swords swords3 = new Swords(3,"Swords3",30,25);
@@ -38,11 +54,6 @@ public class Weapons {
         swordsList.add(swords2);
         swordsList.add(swords3);
         swordsList.add(swords4);
-
-        swordsList.get(randomly);
-        System.out.println(swordsList.get(randomly).printInfo());
-        return swordsList.get(randomly);
-
 
 
     }
@@ -56,10 +67,6 @@ public class Weapons {
         shieldsList.add(shields2);
         shieldsList.add(shields3);
         shieldsList.add(shields4);
-
-        for(Shields shields : shieldsList){
-            shields.printInfo();
-        }
     }
     public void displayWandsInfo(){
         Wands wands1 = new Wands(1,"Wands1",10,20);
@@ -71,23 +78,17 @@ public class Weapons {
         wandsList.add(wands2);
         wandsList.add(wands3);
         wandsList.add(wands4);
-
-        for(Wands wands : wandsList){
-            wands.printInfo();
-        }
     }
 
-    public boolean printInfo(){
-        System.out.println(" \tID: " +getID()+ " \tName: " + getNameWeapon()+ " \tWeight: " + getWeight() + " \tPrice of the " + getNameWeapon() + ": " + getMoneyWeapon());
-        return true;
+    public void printInfoForWeapons(){
+        System.out.println(" \tID: " +getID()+ " \tName: " + getNameWeapon()+ " \tWeight: " + getWeight() + " \tPrice of the " +
+                getNameWeapon() + " : " + getMoneyWeapon());
     }
-
-
     public Weapons(int ID,String nameWeapon, double weight, double moneyWeapon){
-        this.ID = ID;
-        this.nameWeapon = nameWeapon;
-        this.weight = weight;
-        this.moneyWeapon = moneyWeapon;
+       setID(ID);
+       setNameWeapon(nameWeapon);
+       setWeight(weight);
+       setMoneyWeapon(moneyWeapon);
     }
     public Weapons(){
 

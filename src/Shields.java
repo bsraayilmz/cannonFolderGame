@@ -6,11 +6,20 @@ public class Shields extends Weapons{
     }
 
     @Override
-    public boolean printInfo() {
+    public void printInfoForWeapons() {
         System.out.println();
         System.out.println("Information of the Shields: ".toUpperCase(Locale.ROOT));
-        super.printInfo();
+        super.printInfoForWeapons();
         System.out.println();
-        return false;
+    }
+    public Shields() {
+
+    }
+
+    @Override
+    public void displayInfoForAllWeapons() {
+        for(Shields shields : shieldsList){
+            shields.printInfoForWeapons();
+        }
     }
 }

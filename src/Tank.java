@@ -5,7 +5,8 @@ public class Tank extends Characters{
     int strengthLevelForTank = secureRandom.nextInt(1,5);
     int vitalityLevelForTank = secureRandom.nextInt(6,10);
     int intelligenceLevelForTank = secureRandom.nextInt(3,7);
-    public Tank(String type, int ID, String name, double money){
+
+    public Tank(String type, int ID, String name, double money, Weapons weapons){
         setType(type);
         setIdChar(ID);
         this.name = name;
@@ -13,6 +14,8 @@ public class Tank extends Characters{
         setStrength(strengthLevelForTank);
         setVitality(vitalityLevelForTank);
         setIntelligence(intelligenceLevelForTank);
+        setWeaponsRandomly(weapons);
+        inventoryTank.add(weapons);
     }
     public Tank(){
 

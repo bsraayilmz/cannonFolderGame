@@ -7,12 +7,11 @@ public class Swords extends Weapons {
 
 
     @Override
-    public boolean printInfo() {
+    public void printInfoForWeapons() {
         System.out.println();
-        System.out.println("information of the Swords: ".toUpperCase(Locale.ROOT));
-        super.printInfo();
+        System.out.println("information of the Sword: ".toUpperCase(Locale.ROOT));
+        super.printInfoForWeapons();
         System.out.println();
-        return true;
     }
  /*@Override
     /*public double calculateDamageLevel(){
@@ -29,7 +28,7 @@ public class Swords extends Weapons {
     @Override
     public void displayInfoForAllWeapons() {
         for(Swords swords : swordsList){
-            swords.printInfo();
+            swords.printInfoForWeapons();
         }
     }
 }

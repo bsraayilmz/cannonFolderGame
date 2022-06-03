@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public abstract class Location {
@@ -5,6 +6,7 @@ public abstract class Location {
     gamePlay gamePlay = new gamePlay();
     protected Characters characters;
     protected String locationName;
+    ArrayList arrayList = new ArrayList();
     public Characters getCharacters() {
         return characters;
     }
@@ -26,6 +28,9 @@ public abstract class Location {
 
     public Location(Characters characters){
         this.characters = characters;
+    }
+    public Location(ArrayList arrayList){
+        this.arrayList = arrayList;
     }
     Location(){
 
