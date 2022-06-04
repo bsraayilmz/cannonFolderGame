@@ -57,8 +57,8 @@ public class gamePlay {
         characters.chooseCharTable();
     }
 
-    public void start() {
-        location = new Dungeon(getCharacters().ChosenChar) {
+    public void buySomething() {
+         location = new weaponStore(characters){
     };
 
     /*public void selectItem() {

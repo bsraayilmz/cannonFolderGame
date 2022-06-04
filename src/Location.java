@@ -3,8 +3,7 @@ import java.util.Scanner;
 
 public abstract class Location {
     Scanner scanner = new Scanner(System.in);
-    gamePlay gamePlay = new gamePlay();
-    protected Characters characters;
+    protected Characters characters = new Characters();
     protected String locationName;
     ArrayList arrayList = new ArrayList();
     public Characters getCharacters() {
@@ -34,9 +33,6 @@ public abstract class Location {
     }
     Location(){
 
-    }
-    public void equalization(){
-        gamePlay.characters = this.characters;
     }
 
 }

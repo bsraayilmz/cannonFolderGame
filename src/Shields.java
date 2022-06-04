@@ -3,6 +3,7 @@ import java.util.Locale;
 public class Shields extends Weapons{
     public Shields(int ID, String nameWeapon, double weight, double moneyOfWeapon){
         super(ID,nameWeapon,weight,moneyOfWeapon);
+        setKindWeapon(2);
     }
 
     @Override
@@ -21,5 +22,10 @@ public class Shields extends Weapons{
         for(Shields shields : shieldsList){
             shields.printInfoForWeapons();
         }
+    }
+    public void special (Characters character,int turn){
+        System.out.println("Your character used this shield's special ability." +
+                "\nThe character you have choose will stunned for 3 turn.");
+        character.setStunned(true,turn);
     }
 }

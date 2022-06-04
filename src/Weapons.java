@@ -8,6 +8,16 @@ public class Weapons {
     protected double weight;
     protected double moneyWeapon;
 
+    public int getKindWeapon() {
+        return kindWeapon;
+    }
+
+    public void setKindWeapon(int kindWeapon) {
+        this.kindWeapon = kindWeapon;
+    }
+
+    protected int kindWeapon;
+
     public int getID() {
         return ID;
     }
@@ -143,5 +153,11 @@ public class Weapons {
     public void setSwordsList(ArrayList<Swords> swordsList) {
         this.swordsList = swordsList;
     }
+    public void special(Characters holder, Character effected){
+    }
+    public void special(Characters character,int turn){
+
+    }
+    public void special(Characters characters, Characters character){}
 }
 

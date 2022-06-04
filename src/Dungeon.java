@@ -1,42 +1,29 @@
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
-public class Dungeon extends BattleArea{
+public class Dungeon{
     Scanner input = new Scanner(System.in);
-    Characters characters5 = new Characters();
-    ArrayList<Characters> EnemyInBattle = new ArrayList<>();
-    ArrayList<Characters> actionOrder = new ArrayList<>();
+    static Characters characters5 = new Characters();
+    static ArrayList<Characters> EnemyInBattle = new ArrayList<>();
+    static ArrayList<Characters> actionOrder = new ArrayList<>();
     int turn = 1;
     int enemyNumber = 1;
     int floorNumber = 0;
 
-   /* Dungeon(ArrayList arrayList) {
-
-    }*/
 
 
-    @Override
-    public boolean takeLocation(){
-        displayDungeonInfo();
-        return true;
-    }
-    Dungeon(Characters characters){
-        super(characters.ChosenChar, "Dungeon");
-        System.out.println("------------------------------------------------");
-        System.out.println("");
-        // weaponsRandomly.displaySwordsInfo();
-    }
     public void displayDungeonInfo(){
-        while(true){
+
                 System.out.println("You are on dungeon "+floorNumber+"\n"+
-                        "There are "+enemyNumber+" enemy in front of you.");}}
-    public void addChar(){}
+                        "There are "+enemyNumber+" enemy in front of you.");
+                        addEnemy();
 
-
+    }
     public void addEnemy(){
                 for(int i = enemyNumber;i>0;i--){
-                    createEnemy(new Enemy("Enemy", characters.getWeaponsRandomly()),EnemyInBattle);
+                    createEnemy(new Enemy("Enemy", characters5.getWeaponsRandomly()),EnemyInBattle);
                 }
+                for (int k = 0; k< Characters.ChosenChar.size(); k++){
+                    EnemyInBattle.add(Characters.ChosenChar.get(k));}
                 do {
                     int willDelete = 0;
                     Characters[] highestChar = new Characters[1];
@@ -51,17 +38,14 @@ public class Dungeon extends BattleArea{
                     EnemyInBattle.remove(willDelete);
 
                 }
-                while ((enemyNumber+3)!=actionOrder.size()); }
-
-
-            public void battleStarting(){
+                while ((enemyNumber+3)!=actionOrder.size());
                 int passingInArrayList =0;
                 while (true){
                     boolean areThereEnemy = false;
                     showOption(actionOrder.get(passingInArrayList),actionOrder,turn);
 
                     for (int i=0;i<actionOrder.size();i++){
-                        if (actionOrder.get(i).getType().equals("Enemy")){
+                        if (actionOrder.get(i).getKind()==4){
                             if (actionOrder.get(i).isVisible()){
                                 areThereEnemy = true;
                             }
@@ -80,9 +64,9 @@ public class Dungeon extends BattleArea{
                         int[] indexOfEnemy = new int[enemyNumber];
                         for (int i=0;i<actionOrder.size();i++){
                             int counter = 0;
-                            if (actionOrder.get(i).getType().equals("Enemy")){
+                            if (actionOrder.get(i).getKind()==4){
                                 indexOfEnemy[counter] = i;
-                                counter+=1;
+                                counter +=1;
                             }
                         }
                         for (int i=0;i<enemyNumber;i++){
@@ -106,23 +90,23 @@ public class Dungeon extends BattleArea{
                         turn += 1;
                     }
                 }
-                floorNumber +=1;
-                enemyNumber *=2;
-
+                    floorNumber +=1;
+                    enemyNumber *=2;
             }
 
-        public static void createEnemy(Enemy enemy,ArrayList<Characters>Level){
-            Level.add(enemy);
+        public static void createEnemy(Enemy enemy,ArrayList<Characters>EnemyInBattle){
+            EnemyInBattle.add(enemy);
         }
         public static void showOption(Characters character,ArrayList<Characters>actionOrder,int turn){
             Scanner input = new Scanner(System.in);
-            if (character.getType().equals("Fighter")&& character.isVisible()){
+            for(int j=0; j<3; j++){
+            if (character.getKind() == 1&& character.isVisible()){
                 System.out.println("Now it is Fighter's turn:");}
-            else if (character.getType().equals("Healer")&&character.isVisible()){
+            else if (character.getKind()== 3&&character.isVisible()){
                 System.out.println("Now it is Healer's turn::");}
-            else if (character.getType().equals("Tank")&&character.isVisible()){
+            else if (character.getKind()==2&&character.isVisible()){
                 System.out.println("Now it is Tank's turn:");}
-            else if (character.getType().equals("Enemy")&&character.isVisible()){
+            else if (character.getKind()==4&&character.isVisible()){
                 if (character.isStunned()){
                     System.out.println("This enemy is stunned.");
                 }
@@ -134,15 +118,15 @@ public class Dungeon extends BattleArea{
                     boolean isHealerAlive=false;
                     int indexOfHealer=0;
                     for (int i=0;i<actionOrder.size();i++){
-                        if (actionOrder.get(i).getType().equals("Tank")&& actionOrder.get(i).isVisible()){
+                        if (actionOrder.get(i).getKind()==2&& actionOrder.get(i).isVisible()){
                             isTankAlive = true;
                             indexOfTank = i;
                         }
-                        if (actionOrder.get(i).getType().equals("Fighter")&& actionOrder.get(i).isVisible()){
+                        if (actionOrder.get(i).getKind()==1&& actionOrder.get(i).isVisible()){
                             isFighterAlive=true;
                             indexOfFighter = i;
                         }
-                        if (actionOrder.get(i).getType().equals("Healer")&& actionOrder.get(i).isVisible()){
+                        if (actionOrder.get(i).getKind()==3&& actionOrder.get(i).isVisible()){
                             isHealerAlive=true;
                             indexOfHealer=i;
                         }
@@ -150,7 +134,7 @@ public class Dungeon extends BattleArea{
                     if (isTankAlive){
                         System.out.println("Enemy is attacking Tank");
                         actionOrder.get(indexOfTank).takeDamage(character.attack());
-                        System.out.println(actionOrder.get(indexOfTank).getHealthPoint());
+                        actionOrder.get(indexOfTank).getHealthPoint();
                         if (actionOrder.get(indexOfTank).getHealthPoint()<=0){
                             System.out.println("This character's is dead");
                             actionOrder.get(indexOfTank).setVisible(false);
@@ -174,9 +158,9 @@ public class Dungeon extends BattleArea{
                             actionOrder.get(indexOfHealer).setVisible(false);
                         }
                     }
-                }
+                }}
             }
-         /*   if ((character.getType().equals("Fighter")||character.getType().equals("Tank")||character.getType().equals("Healer"))&& character.isVisible()){
+            if ((character.getType().equals("Fighter")||character.getType().equals("Tank")||character.getType().equals("Healer"))&& character.isVisible()){
                 System.out.println("\nHere what you can do:" +
                         "\n1-Attack" +
                         "\n2-Weapon's Speacial Move");
@@ -184,25 +168,25 @@ public class Dungeon extends BattleArea{
                 if (choice==1){
                     int index = getIndexOfEnemy(actionOrder);
                     actionOrder.get(index).takeDamage(character.attack());
-                    actionOrder.get(index).showInfo();
+                    actionOrder.get(index).printInfo();
                     if (actionOrder.get(index).getHealthPoint()<=0){
                         System.out.println("This character's is dead");
                         actionOrder.get(index).setVisible(false);
                     }
                 }
                 else if (choice==2){
-
-                    if (character.onHand[0].getType()==2){
+                    if (character.onHand[0].getKindWeapon()==1){
+                        character.onHand[0].special(character, character);
+                    }
+                    else if (character.onHand[0].getKindWeapon()==2){
                         int index = getIndexOfEnemy(actionOrder);
                         character.onHand[0].special(character,actionOrder.get(index));
                     }
-                    else if (character.onHand[0].getType()==3){
+                    else if (character.onHand[0].getKindWeapon()==3){
                         int index = getIndexOfEnemy(actionOrder);
                         character.onHand[0].special(actionOrder.get(index),turn);
                     }
-                    else if (character.onHand[0].getType()==1){
-                        character.onHand[0].special(character);
-                    }
+
                 }
             }
         }
@@ -220,7 +204,7 @@ public class Dungeon extends BattleArea{
             System.out.println("Please write number of Character that you want to have action on:");
             int choice = input.nextInt();
             return choice;
-        }*/
+        }
 
 
-}}
+}

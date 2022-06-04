@@ -7,6 +7,7 @@ public class Healer extends Characters{
     int vitalityLevelForHealer = secureRandom.nextInt(1,5);
     int intelligenceLevelForHealer = secureRandom.nextInt(6,10);
     public Healer(String type,int ID,String name, double money, Weapons weapons){
+        setKind(3);
         setType(type);
         setIdChar(ID);
         this.name = name;
@@ -34,7 +35,8 @@ public class Healer extends Characters{
     public void printInfo() {
         super.printInfo();
         System.out.print( " \tStrength Level: "+  strengthLevelForHealer + " \tVitality Level: " + vitalityLevelForHealer+
-                " \tIntelligence Level: " + intelligenceLevelForHealer +"\n");
+                " \tIntelligence Level: " + intelligenceLevelForHealer +"\t" +"Health point: "+  calculateHealthPoint(strengthLevelForHealer,vitalityLevelForHealer,intelligenceLevelForHealer)+
+                "\t Dexerity Level: " + getDexerity() + "\n");
     }
     @Override
     public double calculateHealthPoint(int strength, int vitality, int intelligence) {

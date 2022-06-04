@@ -3,31 +3,41 @@ import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class Characters {
+public class Characters implements Playable{
     protected String name;
     private boolean stunned;
     SecureRandom secureRandom = new SecureRandom();
     ArrayList<Weapons> inventoryFighter = new ArrayList<>();
     ArrayList<Weapons> inventoryTank = new ArrayList<>();
     ArrayList<Weapons> inventoryHealer = new ArrayList<>();
+    static Dungeon dungeon = new Dungeon();
 
     protected String type;
+
+    public int getKind() {
+        return kind;
+    }
+
+    public void setKind(int kind) {
+        this.kind = kind;
+    }
+
+    protected int kind;
     protected int vitality;
     protected int intelligence;
     protected int strength;
-    protected int dexerity;
+    protected int dexerity = secureRandom.nextInt(1,10);;
     private int playableTurn;
     ArrayList<Healer> healerArrayList = new ArrayList<>();
     ArrayList<Tank> tankArrayList = new ArrayList<>();
     ArrayList<Fighter> fighterArrayList = new ArrayList<>();
 
-    ArrayList<Characters> ChosenChar = new ArrayList<>();
+    static ArrayList<Characters> ChosenChar = new ArrayList<>();
     protected int idChar;
     protected double moneyOfChar;
     protected Weapons weaponsRandomly;
     protected Clothes clothes;
     protected double healthPoint;
-    Dungeon dungeon = new Dungeon(ChosenChar);
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
@@ -79,7 +89,6 @@ public class Characters {
     }
 
     public void controlChar() {
-        gamePlay gamePlay = new gamePlay();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("You cannot add a fighter character in battle char list! ");
@@ -118,7 +127,8 @@ public class Characters {
             }
         }
         System.out.println("You chose your character successfully!!! Well done. Your character is looking forward you :)");
-        gamePlay.start();
+        Dungeon dungeon = new Dungeon();
+        dungeon.displayDungeonInfo();
     }
 
 
@@ -376,7 +386,7 @@ public class Characters {
                 takeRandomlyItemMenu();
                 characterFighter.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterFighter);
-                dungeon.EnemyInBattle.add(characterFighter);
+                //dungeon.EnemyInBattle.add(characterFighter);
                 System.out.println("added in array ");
                 controlChar();
                 break;

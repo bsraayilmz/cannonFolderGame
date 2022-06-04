@@ -7,6 +7,7 @@ public class Tank extends Characters{
     int intelligenceLevelForTank = secureRandom.nextInt(3,7);
 
     public Tank(String type, int ID, String name, double money, Weapons weapons){
+        setKind(2);
         setType(type);
         setIdChar(ID);
         this.name = name;
@@ -32,7 +33,8 @@ public class Tank extends Characters{
     public void printInfo() {
        super.printInfo();
             System.out.print( " \tStrength Level: "+  strengthLevelForTank + " \tVitality Level: " + vitalityLevelForTank+
-                    " \tIntelligence Level: " + intelligenceLevelForTank + "\n");
+                    " \tIntelligence Level: " + intelligenceLevelForTank +"\t" +"Health point: "+  calculateHealthPoint(strengthLevelForTank,vitalityLevelForTank,intelligenceLevelForTank)+
+                    " \tDexerity Level: " + getDexerity() + "\n");
 
     }
     @Override

@@ -27,7 +27,7 @@ public class weaponStore extends ItemStore {
 
 
     public void selectWeaponsHintMenu() {
-        equalization();
+
         System.out.println("-------------------------------------------------------------------------------");
         System.out.println("Yeeeess, perfect choice to start with weaponsRandomly. You know this job!!!");
         if (characters.ChosenChar.get(0).getType().equals("Fighter")) {
@@ -45,7 +45,6 @@ public class weaponStore extends ItemStore {
     }
 
     public void selectWeaponsMenu() {
-        equalization();
         System.out.println("\t1) Swords\t2) Shields\t3) Wands\t4)Exit from the game ");
         System.out.print("Which weapon type do you prefer? :");
         int selectionOfWeaponType = scanner.nextInt();

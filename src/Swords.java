@@ -3,6 +3,7 @@ import java.util.Locale;
 public class Swords extends Weapons {
     public Swords(int ID, String nameWeapon, double weight, double moneyWeapon) {
         super(ID, nameWeapon, weight, moneyWeapon);
+        setKindWeapon(1);
     }
 
 
@@ -30,5 +31,10 @@ public class Swords extends Weapons {
         for(Swords swords : swordsList){
             swords.printInfoForWeapons();
         }
+    }
+    public void special(Characters characters, Characters character){
+        System.out.println("Your character used this sword's special ability." +
+                "\nYour character will not take any damage this turn.");
+        character.setVisible(false);
     }
 }

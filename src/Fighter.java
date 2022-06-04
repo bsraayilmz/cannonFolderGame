@@ -28,9 +28,11 @@ public class Fighter extends Characters{
     public void printInfo() {
         super.printInfo();
         System.out.print( " \tStrength Level: "+  strengthLevelForFighter + " \tVitality Level: " + vitalityLevelForFighter+
-                " \tIntelligence Level: " + intelligenceLevelForFighter  + "\n" +calculateHealthPoint(strengthLevelForFighter,vitalityLevelForFighter,intelligenceLevelForFighter));
+                " \tIntelligence Level: " + intelligenceLevelForFighter  + "\t" +"Health point: "+  calculateHealthPoint(strengthLevelForFighter,vitalityLevelForFighter,intelligenceLevelForFighter)
+        + "\tDexerity Level : " + getDexerity() + "\n");
             }
     public Fighter(String type,int ID, String name, double money, Weapons weapons){
+        setKind(1);
         setType(type);
         setIdChar(ID);
         setName(name);
