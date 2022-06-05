@@ -32,6 +32,6 @@ public class Wands extends Weapons{
     public void special (Characters holder, Characters effected){
         System.out.println("Your character used this wand's special ability." +
                 "\nHP of character you have choose increase");
-        effected.setHealthPoint(holder.getIntelligence()+healPoint);
+        effected.setHealthPoint((int) (holder.getIntelligence()+healPoint));
     }
 }

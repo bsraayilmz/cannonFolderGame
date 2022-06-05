@@ -37,7 +37,7 @@ public class Characters implements Playable{
     protected double moneyOfChar;
     protected Weapons weaponsRandomly;
     protected Clothes clothes;
-    protected double healthPoint;
+    protected int healthPoint;
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
@@ -126,7 +126,7 @@ public class Characters implements Playable{
                 characters.printInfo();
             }
         }
-        System.out.println("You chose your character successfully!!! Well done. Your character is looking forward you :)");
+        System.out.println("You chose your character successfully!!! Well done. Your character's are looking forward you :)");
         Dungeon dungeon = new Dungeon();
         dungeon.displayDungeonInfo();
     }
@@ -153,24 +153,9 @@ public class Characters implements Playable{
     public Characters() {
 
     }
-
-
-    public int getCharEntering() {
-        return charEntering;
-    }
-
     public void setCharEntering(int charEntering) {
         this.charEntering = charEntering;
     }
-
-    public int getNewCharEntering() {
-        return newCharEntering;
-    }
-
-    public void setNewCharEntering(int newCharEntering) {
-        this.newCharEntering = newCharEntering;
-    }
-
 
     public String getName() {
         return name;
@@ -237,7 +222,7 @@ public class Characters implements Playable{
         return healthPoint;
     }
 
-    public void setHealthPoint(double healthPoint) {
+    public void setHealthPoint(int healthPoint) {
         this.healthPoint = healthPoint;
     }
 
@@ -313,7 +298,7 @@ public class Characters implements Playable{
 
 
     public double calculateHealthPoint(int strength, int vitality, int intelligence) {
-        healthPoint = (0.7 * vitality) + (0.2 * strength) + (0.1 * intelligence);
+        healthPoint = (int) ((int )(8*0.7 * vitality) + (8*0.2 * strength) + (8*0.1 * intelligence));
         return healthPoint;
     }
 
@@ -586,7 +571,7 @@ public class Characters implements Playable{
         System.out.println("\t\t\t---------------------HINT--------------------");
         System.out.println(" The first weapon before starting the game will come automatically! \n " +
                 "After first level, you can take weapon from weapon store according to your character's money");
-        System.out.println("-----------------------------------------------------");
+        System.out.println("\t\t\t-----------------------------------------------------");
         System.out.println();
         System.out.println("Loading your randomly weapons... ");
         try {
@@ -602,7 +587,7 @@ public class Characters implements Playable{
 
     public void takeDamage(int damage) {
         healthPoint = healthPoint - damage;
-
+        System.out.println("Rest Health Point: " + healthPoint);
     }
 
     public boolean isVisible() {

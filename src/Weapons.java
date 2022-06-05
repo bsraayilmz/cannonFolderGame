@@ -28,9 +28,11 @@ public class Weapons {
 
     protected int ID;
 
+     protected ArrayList<Wands>wandsList = new ArrayList<>();
+     protected ArrayList<Swords> swordsList = new ArrayList<>();
+     protected ArrayList<Shields> shieldsList = new ArrayList<>();
+    static protected ArrayList<Weapons> weaponsAll = new ArrayList<>();
 
-    protected ArrayList<Swords> swordsList = new ArrayList<>();
-    protected ArrayList<Shields> shieldsList = new ArrayList<>();
 
     public ArrayList<Shields> getShieldsList() {
         return shieldsList;
@@ -48,7 +50,7 @@ public class Weapons {
         this.wandsList = wandsList;
     }
 
-    protected ArrayList<Wands>wandsList = new ArrayList<>();
+
     public void displayInfoForAllWeapons(){
 
     }
@@ -65,6 +67,12 @@ public class Weapons {
         swordsList.add(swords3);
         swordsList.add(swords4);
 
+        weaponsAll.add(swords1);
+        weaponsAll.add(swords2);
+        weaponsAll.add(swords3);
+        weaponsAll.add(swords4);
+
+
 
     }
     public void displayShieldsInfo(){
@@ -77,6 +85,12 @@ public class Weapons {
         shieldsList.add(shields2);
         shieldsList.add(shields3);
         shieldsList.add(shields4);
+
+        weaponsAll.add(shields1);
+        weaponsAll.add(shields2);
+        weaponsAll.add(shields3);
+        weaponsAll.add(shields4);
+
     }
     public void displayWandsInfo(){
         Wands wands1 = new Wands(1,"Wands1",10,20);
@@ -88,6 +102,12 @@ public class Weapons {
         wandsList.add(wands2);
         wandsList.add(wands3);
         wandsList.add(wands4);
+
+        weaponsAll.add(wands1);
+        weaponsAll.add(wands2);
+        weaponsAll.add(wands3);
+        weaponsAll.add(wands4);
+
     }
 
     public void printInfoForWeapons(){

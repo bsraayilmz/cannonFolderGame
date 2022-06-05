@@ -43,4 +43,8 @@ public class Tank extends Characters{
         super.calculateHealthPoint(strengthLevelForTank, vitalityLevelForTank, intelligenceLevelForTank);
         return healthPoint;
     }
+    @Override
+    public int attack(){
+        return (int) ((int)(Math.random()*10)+super.getVitality());
+    }
 }

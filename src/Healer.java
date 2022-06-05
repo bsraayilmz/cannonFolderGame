@@ -44,4 +44,8 @@ public class Healer extends Characters{
         super.calculateHealthPoint(strengthLevelForHealer, vitalityLevelForHealer, intelligenceLevelForHealer);
         return healthPoint;
     }
+    @Override
+    public int attack(){
+        return (int) ((int)(Math.random()*10)+super.getIntelligence());
+    }
 }
