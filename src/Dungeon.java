@@ -12,10 +12,10 @@ public class Dungeon{
 
 
     public void displayDungeonInfo(){
-
+                while (true){
                 System.out.println("You are on dungeon "+floorNumber+"\n"+
                         "There are "+enemyNumber+" enemy in front of you.");
-                        addEnemy();
+                        addEnemy();}
 
     }
     public void addEnemy(){
@@ -98,6 +98,7 @@ public class Dungeon{
             EnemyInBattle.add(enemy);
         }
         public static void showOption(Characters character,ArrayList<Characters>actionOrder,int turn){
+            System.out.println("BUraya giriyor....");
             Scanner input = new Scanner(System.in);
             for(int j=0; j<3; j++){
             if (character.getKind() == 1&& character.isVisible()){

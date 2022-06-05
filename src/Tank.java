@@ -17,6 +17,7 @@ public class Tank extends Characters{
         setIntelligence(intelligenceLevelForTank);
         setWeaponsRandomly(weapons);
         inventoryTank.add(weapons);
+        setVisible(true);
     }
     public Tank(){
 

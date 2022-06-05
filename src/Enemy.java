@@ -12,6 +12,7 @@ public class Enemy extends Characters{
                 setIntelligence(intelligenceLevelForEnemy);
                 setWeaponsRandomly(weapons);
                 inventoryFighter.add(weapons);
+                setVisible(true);
             }
 
 

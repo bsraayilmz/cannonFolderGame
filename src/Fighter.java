@@ -42,6 +42,7 @@ public class Fighter extends Characters{
         setIntelligence(intelligenceLevelForFighter);
         setWeaponsRandomly(weapons);
         inventoryFighter.add(weapons);
+        setVisible(true);
     }
     public Fighter(){
     }
