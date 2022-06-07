@@ -1,5 +1,4 @@
 import java.security.SecureRandom;
-import java.util.IllegalFormatCodePointException;
 
 public class Healer extends Characters{
     SecureRandom secureRandom = new SecureRandom();
@@ -45,7 +44,8 @@ public class Healer extends Characters{
         return healthPoint;
     }
     @Override
-    public int attack(){
-        return (int) ((int)(Math.random()*10)+super.getIntelligence());
+    public int attack(Weapons weapons){
+        weapons = Dungeon.EnemyInBattle.get(2).getWeaponsRandomly();
+        return weapons.calculateDamageLevel();
     }
 }

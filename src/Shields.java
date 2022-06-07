@@ -25,7 +25,18 @@ public class Shields extends Weapons{
     }
     public void special (Characters character,int turn){
         System.out.println("Your character used this shield's special ability." +
-                "\nThe character you have choose will stunned for 3 turn.");
+                "\nThe character you have chooseAttackOrSpecial will stunned for 3 turn.");
         character.setStunned(true,turn);
+    }
+
+    @Override
+    public int calculateDamageLevel() {
+            int damage=1;
+            for (Characters characters : Dungeon.EnemyInBattle) {
+                characters.getWeaponsRandomly().setDamageLevel(characters.getVitality() * getDamageLevel());
+                damage = (int) characters.getWeaponsRandomly().getDamageLevel();
+            }
+            return damage;
+
     }
 }

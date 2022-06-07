@@ -1,5 +1,4 @@
 import java.security.SecureRandom;
-import java.util.ArrayList;
 
 public class Fighter extends Characters{
     SecureRandom secureRandom = new SecureRandom();
@@ -47,8 +46,10 @@ public class Fighter extends Characters{
     public Fighter(){
     }
 
+    @Override
+    public int attack(Weapons weapons) {
+        weapons = Dungeon.EnemyInBattle.get(0).getWeaponsRandomly();
+        return weapons.calculateDamageLevel();
 
-
-
-
+    }
 }

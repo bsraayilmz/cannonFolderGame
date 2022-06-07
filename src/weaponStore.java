@@ -31,13 +31,13 @@ public class weaponStore extends ItemStore {
         System.out.println("-------------------------------------------------------------------------------");
         System.out.println("Yeeeess, perfect choice to start with weaponsRandomly. You know this job!!!");
         if (characters.ChosenChar.get(0).getType().equals("Fighter")) {
-            System.out.println("Hint: Your character is " + characters.ChosenChar.get(0).getName() + ". Therefore you must choose a sword " +
+            System.out.println("Hint: Your character is " + characters.ChosenChar.get(0).getName() + ". Therefore you must chooseAttackOrSpecial a sword " +
                     "that is used more effective by the Fighter type");
         } else if (characters.ChosenChar.get(1).getType().equals("Tank")) {
-            System.out.println("Hint: Your character is " + characters.ChosenChar.get(1).getName() + ". Therefore you must choose a shields" +
+            System.out.println("Hint: Your character is " + characters.ChosenChar.get(1).getName() + ". Therefore you must chooseAttackOrSpecial a shields" +
                     "that is used more effective by the Tank type");
         } else if (characters.ChosenChar.get(2).getType().equals("Healer")) {
-            System.out.println("Hint: Your character is " + characters.ChosenChar.get(2).getName() + ". Therefore you must choose a wands " +
+            System.out.println("Hint: Your character is " + characters.ChosenChar.get(2).getName() + ". Therefore you must chooseAttackOrSpecial a wands " +
                     "that is used more effective by the Healer");
 
         }

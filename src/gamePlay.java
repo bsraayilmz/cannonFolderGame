@@ -67,8 +67,8 @@ public class gamePlay {
         System.out.println();
         System.out.println("You chose your character successfully!!! Well done. Your character is looking forward you :)");
         System.out.println("-------------------------------------------------------------------------------");
-        System.out.println("The last step before playing. You must choose a weapon and clothe for your character.");
-        System.out.print("Which one do you want to choose firstly, weapon or clothe? If weapon select 1, clothe select 2: ");
+        System.out.println("The last step before playing. You must chooseAttackOrSpecial a weapon and clothe for your character.");
+        System.out.print("Which one do you want to chooseAttackOrSpecial firstly, weapon or clothe? If weapon select 1, clothe select 2: ");
         selectItem = scanner.nextInt();
         switch (selectItem) {
             case 1:

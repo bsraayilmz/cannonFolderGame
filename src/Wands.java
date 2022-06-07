@@ -24,6 +24,16 @@ public class Wands extends Weapons{
     }
 
     @Override
+    public int calculateDamageLevel() {
+        int damage=1;
+        for (Characters characters : Dungeon.EnemyInBattle) {
+            characters.getWeaponsRandomly().setDamageLevel(characters.getIntelligence() * getDamageLevel());
+            damage = (int) characters.getWeaponsRandomly().getDamageLevel();
+        }
+    return damage;
+    }
+
+    @Override
     public void displayInfoForAllWeapons() {
         for(Wands wands : wandsList){
             wands.printInfoForWeapons();
@@ -31,7 +41,7 @@ public class Wands extends Weapons{
     }
     public void special (Characters holder, Characters effected){
         System.out.println("Your character used this wand's special ability." +
-                "\nHP of character you have choose increase");
+                "\nHP of character you have chooseAttackOrSpecial increase");
         effected.setHealthPoint((int) (holder.getIntelligence()+healPoint));
     }
 }
