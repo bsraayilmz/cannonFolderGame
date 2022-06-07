@@ -123,8 +123,8 @@ public class Weapons {
     public Weapons(){
 
     }
-    public double calculateDamageLevel(){
-        return damageLevel;
+    public int calculateDamageLevel(){
+        return (int) damageLevel;
     }
 
     public double getWeight() {

@@ -11,6 +11,14 @@ public class Characters implements Playable{
     ArrayList<Weapons> inventoryTank = new ArrayList<>();
     ArrayList<Weapons> inventoryHealer = new ArrayList<>();
     static Dungeon dungeon = new Dungeon();
+    int restHealthPoint;
+    public int getRestHealthPoint() {
+        return restHealthPoint;
+    }
+
+    public void setRestHealthPoint(int restHealthPoint) {
+        this.restHealthPoint = restHealthPoint;
+    }
 
     protected String type;
 
@@ -75,7 +83,7 @@ public class Characters implements Playable{
     public void isPlayableTurnCome(int turn){
         if (turn==playableTurn){
             stunned = false;
-            attack();
+            attack(Dungeon.EnemyInBattle.get(0).getWeaponsRandomly());
         }
         else if(turn != playableTurn ){
             System.out.println("this enemy look like mess");
@@ -88,44 +96,32 @@ public class Characters implements Playable{
         playableTurn = turn+3;
     }
 
-    public void controlChar() {
+    public void controlCharForTankAndHealer() {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("You cannot add a fighter character in battle char list! ");
         System.out.println();
-        System.out.println("Now, for the second char, which one do you add? ");
-        System.out.println("                       Tank-->    please enter 1 ------- ");
-        System.out.print("                       Healer-->  please enter 2 ------- ");
+        System.out.println("NOW, SECONDLY PLEASE CHOOSE THE TANK BY ENTERING 2 ");
         System.out.print("YOUR CHARACTER TYPE: ");
         setCharEntering(charEntering = scanner.nextInt());
 
-        while (charEntering < 1 || charEntering > 3) {
-            System.out.println("!!! Your selection is not valid. Please enter a value between 1 and 3 !!!");
+        while (charEntering!=2) {
+            System.out.println("!!! Your selection is not valid. Please enter a value 2 !!!");
             System.out.print("YOUR CHARACTER TYPE: ");
             setCharEntering(scanner.nextInt());
         }
-        if (charEntering == 1) {
+        if (charEntering == 2) {
             tankChoose();
             System.out.println("You cannot add a tank character in battle char list! ");
-            System.out.println();
             healerChoose();
             System.out.println("Yeeeey, you completed char list. Well done :)");
             System.out.println();
-            System.out.println("Your characters that you choose ");
-            for (Characters characters : ChosenChar) {
-                characters.printInfo();
-            }
-        } else if (charEntering == 2) {
-            healerChoose();
-            System.out.println("You cannot add a healer character in battle char list! ");
-            System.out.println();
-            tankChoose();
-            System.out.println("Yeeeey, you completed char list. Well done :)");
             System.out.println("Your characters that you choose ");
             for (Characters characters : ChosenChar) {
                 characters.printInfo();
             }
         }
+        System.out.println();
         System.out.println("You chose your character successfully!!! Well done. Your character's are looking forward you :)");
         Dungeon dungeon = new Dungeon();
         dungeon.displayDungeonInfo();
@@ -295,10 +291,9 @@ public class Characters implements Playable{
         naruti.printInfo();
 
     }
-
-
     public double calculateHealthPoint(int strength, int vitality, int intelligence) {
         healthPoint = (int) ((int )(8*0.7 * vitality) + (8*0.2 * strength) + (8*0.1 * intelligence));
+        setRestHealthPoint(healthPoint);
         return healthPoint;
     }
 
@@ -316,7 +311,7 @@ public class Characters implements Playable{
         System.out.println("Our game has three main characters which are Fighter, Tank and Healer. When fighting has to be one of them all characters" +
                 " in a game! ");
         System.out.println("Don't forget that all character type has four different character.\n" +
-                "               Firstly you need to choose fighter type :)");
+                "               Firstly you need to chooseAttackOrSpecial fighter type :)");
         System.out.println();
         System.out.println("After choosing a character in one type, you must pay money to get other characters for the same type character!");
         System.out.println();
@@ -326,7 +321,7 @@ public class Characters implements Playable{
         charGeneralChoose();
     }
 
-    //this method control if the first character to choose is fighter because it must be fighter!
+    //this method control if the first character to chooseAttackOrSpecial is fighter because it must be fighter!
     public void charGeneralChoose() {
         Scanner scanner = new Scanner(System.in);
         System.out.println();
@@ -334,7 +329,7 @@ public class Characters implements Playable{
         System.out.print("YOUR CHARACTER TYPE: ");
         setCharEntering(charEntering = scanner.nextInt());
         while (charEntering != 1) {
-            System.out.println("!!! Your selection is not valid. Please enter 1 to choose a fighter!!!");
+            System.out.println("!!! Your selection is not valid. Please enter 1 to chooseAttackOrSpecial a fighter!!!");
             System.out.print("YOUR CHARACTER TYPE: ");
             setCharEntering(scanner.nextInt());
         }
@@ -371,9 +366,9 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterFighter.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterFighter);
-                //dungeon.EnemyInBattle.add(characterFighter);
+                Dungeon.EnemyInBattle.add(characterFighter);
                 System.out.println("added in array ");
-                controlChar();
+                controlCharForTankAndHealer();
                 break;
             case 2:
                 characterFighter = fighterArrayList.get(1);
@@ -384,9 +379,9 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterFighter.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterFighter);
-                dungeon.EnemyInBattle.add(characterFighter);
+                Dungeon.EnemyInBattle.add(characterFighter);
                 System.out.println("added in array ");
-                controlChar();
+                controlCharForTankAndHealer();
                 break;
             case 3:
                 characterFighter = fighterArrayList.get(2);
@@ -397,9 +392,9 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterFighter.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterFighter);
-                dungeon.EnemyInBattle.add(characterFighter);
+                Dungeon.EnemyInBattle.add(characterFighter);
                 System.out.println("added in array ");
-                controlChar();
+                controlCharForTankAndHealer();
 
                 break;
             case 4:
@@ -411,9 +406,9 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterFighter.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterFighter);
-                dungeon.EnemyInBattle.add(characterFighter);
+                Dungeon.EnemyInBattle.add(characterFighter);
                 System.out.println("added in array ");
-                controlChar();
+                controlCharForTankAndHealer();
                 break;
             default:
                 System.out.println("Invalid entering! Please enter a value between 1 and 4.");
@@ -446,7 +441,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterTank.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterTank);
-                dungeon.EnemyInBattle.add(characterTank);
+                Dungeon.EnemyInBattle.add(characterTank);
                 System.out.println("added in array ");
 
                 break;
@@ -459,7 +454,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterTank.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterTank);
-                dungeon.EnemyInBattle.add(characterTank);
+                Dungeon.EnemyInBattle.add(characterTank);
                 System.out.println("added in array ");
                 break;
 
@@ -472,7 +467,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterTank.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterTank);
-                dungeon.EnemyInBattle.add(characterTank);
+                Dungeon.EnemyInBattle.add(characterTank);
                 System.out.println("added in array ");
 
                 break;
@@ -485,7 +480,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterTank.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterTank);
-                dungeon.EnemyInBattle.add(characterTank);
+                Dungeon.EnemyInBattle.add(characterTank);
                 System.out.println("added in array ");
                 break;
             default:
@@ -509,7 +504,6 @@ public class Characters implements Playable{
         System.out.println("Which character do you want to use for healer? :)");
         int healerEnter = scanner.nextInt();
         switch (healerEnter) {
-
             case 1:
                 characterHealer = healerArrayList.get(0);
                 System.out.println("Information of the character: ".toUpperCase(Locale.ROOT));
@@ -519,7 +513,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterHealer.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterHealer);
-                dungeon.EnemyInBattle.add(characterHealer);
+                Dungeon.EnemyInBattle.add(characterHealer);
                 System.out.println("added in array ");
                 break;
             case 2:
@@ -531,7 +525,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterHealer.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterHealer);
-                dungeon.EnemyInBattle.add(characterHealer);
+                Dungeon.EnemyInBattle.add(characterHealer);
                 System.out.println("added in array ");
                 break;
             case 3:
@@ -543,7 +537,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterHealer.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterHealer);
-                dungeon.EnemyInBattle.add(characterHealer);
+                Dungeon.EnemyInBattle.add(characterHealer);
                 System.out.println("added in array ");
                 break;
             case 4:
@@ -555,7 +549,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterHealer.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterHealer);
-                dungeon.EnemyInBattle.add(characterHealer);
+                Dungeon.EnemyInBattle.add(characterHealer);
                 System.out.println(characterHealer.name + "added in array ");
                 break;
             default:
@@ -581,7 +575,7 @@ public class Characters implements Playable{
         }
     }
 
-    public int attack() {
+    public int attack(Weapons weapons) {
         return 0;
     }
 
@@ -593,6 +587,8 @@ public class Characters implements Playable{
     public boolean isVisible() {
         return visible;
     }
+
+
 
     /*public void addWeapons(Weapons weapons){
         onHand[0] = weapons;

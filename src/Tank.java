@@ -1,6 +1,9 @@
 import java.security.SecureRandom;
 
 public class Tank extends Characters{
+
+
+
     SecureRandom secureRandom = new SecureRandom();
     int strengthLevelForTank = secureRandom.nextInt(1,5);
     int vitalityLevelForTank = secureRandom.nextInt(6,10);
@@ -44,7 +47,9 @@ public class Tank extends Characters{
         return healthPoint;
     }
     @Override
-    public int attack(){
-        return (int) ((int)(Math.random()*10)+super.getVitality());
+    public int attack(Weapons weapons){
+        weapons = Dungeon.EnemyInBattle.get(1).getWeaponsRandomly();
+        return weapons.calculateDamageLevel();
     }
+
 }
