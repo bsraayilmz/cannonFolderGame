@@ -23,6 +23,7 @@ public class Tank extends Characters{
         setVisible(true);
         setStunned(false);
         setInTheGame(true);
+        inventoryWeight = 0;
     }
     public Tank(){
 

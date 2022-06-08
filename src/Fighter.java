@@ -44,6 +44,7 @@ public class Fighter extends Characters{
         setVisible(true);
         setStunned(false);
         setInTheGame(true);
+        inventoryWeight = 0;
     }
     public Fighter(){
     }

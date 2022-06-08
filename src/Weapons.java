@@ -1,11 +1,11 @@
 import java.security.SecureRandom;
 import java.util.ArrayList;
 
-public class Weapons {
+public class Weapons extends Items{
     SecureRandom secureRandom = new SecureRandom();
     protected String nameWeapon;
     protected double damageLevel = 1;
-    protected double weight;
+
     protected double moneyWeapon;
 
     public int getKindWeapon() {
@@ -110,14 +110,14 @@ public class Weapons {
 
     }
 
-    public void printInfoForWeapons(){
-        System.out.println(" \tID: " +getID()+ " \tName: " + getNameWeapon()+ " \tWeight: " + getWeight() + " \tPrice of the " +
+    public void printInfo(){
+        System.out.println(" \tID: " +getID()+ " \tName: " + getNameWeapon()+ " \tWeight: " + getItemWeight() + " \tPrice of the " +
                 getNameWeapon() + " : " + getMoneyWeapon());
     }
-    public Weapons(int ID,String nameWeapon, double weight, double moneyWeapon){
+    public Weapons(int ID,String nameWeapon, int weight, double moneyWeapon){
        setID(ID);
        setNameWeapon(nameWeapon);
-       setWeight(weight);
+       setItemWeight(weight);
        setMoneyWeapon(moneyWeapon);
     }
     public Weapons(){
@@ -127,13 +127,6 @@ public class Weapons {
         return (int) damageLevel;
     }
 
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
 
     public double getMoneyWeapon() {
         return moneyWeapon;

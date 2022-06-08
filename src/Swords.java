@@ -1,17 +1,17 @@
 import java.util.Locale;
 
 public class Swords extends Weapons {
-    public Swords(int ID, String nameWeapon, double weight, double moneyWeapon) {
+    public Swords(int ID, String nameWeapon, int weight, double moneyWeapon) {
         super(ID, nameWeapon, weight, moneyWeapon);
         setKindWeapon(1);
     }
 
 
     @Override
-    public void printInfoForWeapons() {
+    public void printInfo() {
         System.out.println();
         System.out.println("information of the Sword: ".toUpperCase(Locale.ROOT));
-        super.printInfoForWeapons();
+        super.printInfo();
         System.out.println();
     }
  /*@Override
@@ -29,13 +29,13 @@ public class Swords extends Weapons {
     @Override
     public void displayInfoForAllWeapons() {
         for(Swords swords : swordsList){
-            swords.printInfoForWeapons();
+            swords.printInfo();
         }
     }
     public void special(Characters characters, Characters character){
         System.out.println("Your character used this sword's special ability." +
                 "\nYour character will not take any damage this turn.");
-        character.setVisible(false);
+        character.setInTheGame(false);
     }
 
     @Override

@@ -37,6 +37,7 @@ public class Dungeon {
             System.out.println("You are on dungeon " + floorNumber + "\n\n" +
                     "There are " + enemyNumber + " enemy in front of you.");
             System.out.println();
+            setZero(actionOrder);
             addEnemyAlg();
         }
 
@@ -328,7 +329,11 @@ public class Dungeon {
                         }
                     }
 
-                } else {
+                }
+                else if (attackOrSpecial == 2){
+                    //Burası special kısmı..
+                }
+                else {
                     System.out.print("Please enter a valid value to kill the enemies: ");
                     chooseAttackOrSpecial();
                 }

@@ -46,6 +46,19 @@ public class Characters implements Playable{
     protected Weapons weaponsRandomly;
     protected Clothes clothes;
     protected int healthPoint;
+    protected int inventoryWeight;
+
+    public void pickUp(Items item){
+        if (inventoryWeight<=strength){
+            Inventory.add(item);
+            inventoryWeight += item.getItemWeight();
+        }
+        else if (inventoryWeight>strength){
+            System.out.println("Your character is carrying too much item on inventory.");
+        }
+
+    }
+
     public void setVisible(boolean visible) {
         this.visible = visible;
     }
@@ -360,7 +373,7 @@ public class Characters implements Playable{
                         " \tVitality: " + characterFighter.getVitality() + " \tIntelligence: " + characterFighter.getIntelligence() +
                         " \tMoney of character : " + characterFighter.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterFighter.getWeaponsRandomly().printInfoForWeapons();
+                characterFighter.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterFighter);
                 Dungeon.EnemyInBattle.add(characterFighter);
                 System.out.println("added in array ");
@@ -373,7 +386,7 @@ public class Characters implements Playable{
                         " \tVitality: " + characterFighter.getVitality() + " \tIntelligence: " + characterFighter.getIntelligence() +
                         " \tMoney of character : " + characterFighter.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterFighter.getWeaponsRandomly().printInfoForWeapons();
+                characterFighter.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterFighter);
                 Dungeon.EnemyInBattle.add(characterFighter);
                 System.out.println("added in array ");
@@ -386,7 +399,7 @@ public class Characters implements Playable{
                         " \tVitality: " + characterFighter.getVitality() + " \tIntelligence: " + characterFighter.getIntelligence() +
                         " \tMoney of character : " + characterFighter.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterFighter.getWeaponsRandomly().printInfoForWeapons();
+                characterFighter.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterFighter);
                 Dungeon.EnemyInBattle.add(characterFighter);
                 System.out.println("added in array ");
@@ -400,7 +413,7 @@ public class Characters implements Playable{
                         " \tVitality: " + characterFighter.getVitality() + " \tIntelligence: " + characterFighter.getIntelligence() +
                         " \tMoney of character : " + characterFighter.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterFighter.getWeaponsRandomly().printInfoForWeapons();
+                characterFighter.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterFighter);
                 Dungeon.EnemyInBattle.add(characterFighter);
                 System.out.println("added in array ");
@@ -435,7 +448,7 @@ public class Characters implements Playable{
                         " \tVitality: " + characterTank.getVitality() + " \tIntelligence: " + characterTank.getIntelligence() +
                         " \tMoney of character : " + characterTank.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterTank.getWeaponsRandomly().printInfoForWeapons();
+                characterTank.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterTank);
                 Dungeon.EnemyInBattle.add(characterTank);
                 System.out.println("added in array ");
@@ -448,7 +461,7 @@ public class Characters implements Playable{
                         " \tVitality: " + characterTank.getVitality() + " \tIntelligence: " + characterTank.getIntelligence() +
                         " \tMoney of character : " + characterTank.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterTank.getWeaponsRandomly().printInfoForWeapons();
+                characterTank.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterTank);
                 Dungeon.EnemyInBattle.add(characterTank);
                 System.out.println("added in array ");
@@ -461,7 +474,7 @@ public class Characters implements Playable{
                         " \tVitality: " + characterTank.getVitality() + " \tIntelligence: " + characterTank.getIntelligence() +
                         " \tMoney of character : " + characterTank.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterTank.getWeaponsRandomly().printInfoForWeapons();
+                characterTank.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterTank);
                 Dungeon.EnemyInBattle.add(characterTank);
                 System.out.println("added in array ");
@@ -474,7 +487,7 @@ public class Characters implements Playable{
                         " \tVitality: " + characterTank.getVitality() + " \tIntelligence: " + characterTank.getIntelligence() +
                         " \tMoney of character : " + characterTank.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterTank.getWeaponsRandomly().printInfoForWeapons();
+                characterTank.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterTank);
                 Dungeon.EnemyInBattle.add(characterTank);
                 System.out.println("added in array ");
@@ -507,7 +520,7 @@ public class Characters implements Playable{
                         " \tVitality: " + characterHealer.getVitality() + " \tIntelligence: " + characterHealer.getIntelligence() +
                         " \tMoney of character : " + characterHealer.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterHealer.getWeaponsRandomly().printInfoForWeapons();
+                characterHealer.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterHealer);
                 Dungeon.EnemyInBattle.add(characterHealer);
                 System.out.println("added in array ");
@@ -519,7 +532,7 @@ public class Characters implements Playable{
                         " \tVitality: " + characterHealer.getVitality() + " \tIntelligence: " + characterHealer.getIntelligence() +
                         " \tMoney of character : " + characterHealer.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterHealer.getWeaponsRandomly().printInfoForWeapons();
+                characterHealer.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterHealer);
                 Dungeon.EnemyInBattle.add(characterHealer);
                 System.out.println("added in array ");
@@ -531,7 +544,7 @@ public class Characters implements Playable{
                         " \tVitality: " + characterHealer.getVitality() + " \tIntelligence: " + characterHealer.getIntelligence() +
                         " \tMoney of character : " + characterHealer.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterHealer.getWeaponsRandomly().printInfoForWeapons();
+                characterHealer.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterHealer);
                 Dungeon.EnemyInBattle.add(characterHealer);
                 System.out.println("added in array ");
@@ -543,7 +556,7 @@ public class Characters implements Playable{
                         " \tVitality: " + characterHealer.getVitality() + " \tIntelligence: " + characterHealer.getIntelligence() +
                         " \tMoney of character : " + characterHealer.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterHealer.getWeaponsRandomly().printInfoForWeapons();
+                characterHealer.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterHealer);
                 Dungeon.EnemyInBattle.add(characterHealer);
                 System.out.println(characterHealer.name + "added in array ");

@@ -19,6 +19,7 @@ public class Healer extends Characters{
         setVisible(true);
         setStunned(false);
         setInTheGame(true);
+        inventoryWeight = 0;
 
     }
     //to display all healer

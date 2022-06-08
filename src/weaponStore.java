@@ -1,6 +1,6 @@
 public class weaponStore extends ItemStore {
 
-    Swords swords = new Swords(1, "",5.5,20 );
+    Swords swords = new Swords(1, "",5,20 );
     Weapons weapons = new Weapons();
 
     weaponStore(Characters characters,Weapons weapons ) {
@@ -158,10 +158,10 @@ public class weaponStore extends ItemStore {
             if (characters.getMoneyOfChar() < getWeapons().moneyWeapon){
                 System.out.println("You cannot buy this weapon. Your money is not enough.!");
                 selectWeaponsMenu();
-            }else if (characters.getMoneyOfChar() >= getWeapons().moneyWeapon && characters.getStrength() >= getWeapons().getWeight()) {
+            }else if (characters.getMoneyOfChar() >= getWeapons().moneyWeapon && characters.getStrength() >= getWeapons().getItemWeight()) {
                 System.out.println("Congratulations! You had" + getWeapons());
                 System.out.println("Your remaining money is: " + (characters.getMoneyOfChar()-getWeapons().moneyWeapon));
-            }else if(characters.getStrength() < getWeapons().getWeight()){
+            }else if(characters.getStrength() < getWeapons().getItemWeight()){
                 System.out.println("You cannot buy this weapon. Be careful, this weapon's weight is too heavy...!");
                 selectWeaponsMenu();
             }
