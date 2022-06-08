@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class Characters implements Playable{
     protected String name;
     private boolean stunned;
+    private boolean isInTheGame;
     SecureRandom secureRandom = new SecureRandom();
     ArrayList<Weapons> inventoryFighter = new ArrayList<>();
     ArrayList<Weapons> inventoryTank = new ArrayList<>();
@@ -35,7 +36,6 @@ public class Characters implements Playable{
     protected int intelligence;
     protected int strength;
     protected int dexerity = secureRandom.nextInt(1,10);;
-    private int playableTurn;
     ArrayList<Healer> healerArrayList = new ArrayList<>();
     ArrayList<Tank> tankArrayList = new ArrayList<>();
     ArrayList<Fighter> fighterArrayList = new ArrayList<>();
@@ -51,6 +51,13 @@ public class Characters implements Playable{
     }
 
     private boolean visible;
+
+    public void setInTheGame(boolean isInTheGame){
+        this.isInTheGame=isInTheGame;
+    }
+    public boolean getInTheGame(){
+        return isInTheGame;
+    }
 
     public String getType() {
         return type;
@@ -80,20 +87,9 @@ public class Characters implements Playable{
     public boolean isStunned(){
         return stunned;
     }
-    public void isPlayableTurnCome(int turn){
-        if (turn==playableTurn){
-            stunned = false;
-            attack(Dungeon.EnemyInBattle.get(0).getWeaponsRandomly());
-        }
-        else if(turn != playableTurn ){
-            System.out.println("this enemy look like mess");
-        }
 
-    }
-
-    public void setStunned(boolean stunned,int turn) {
+    public void setStunned(boolean stunned) {
         this.stunned = stunned;
-        playableTurn = turn+3;
     }
 
     public void controlCharForTankAndHealer() {

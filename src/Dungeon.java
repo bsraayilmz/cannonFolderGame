@@ -401,6 +401,19 @@ public class Dungeon {
                 //menuForWeapon
             }
         }
+        public static void setZero(ArrayList<Characters>actionOrder){
+            for (Characters characters : actionOrder) {
+                if (characters.isStunned()) {
+                    characters.setStunned(false);
+                }
+            }
+            for (Characters characters : actionOrder) {
+                if (!characters.getInTheGame()) {
+                    characters.setInTheGame(true);
+                }
+            }
+
+        }
     }
 
      /* public void addEnemy() {

@@ -17,6 +17,8 @@ public class Healer extends Characters{
         setWeaponsRandomly(weapons);
         inventoryHealer.add(weapons);
         setVisible(true);
+        setStunned(false);
+        setInTheGame(true);
 
     }
     //to display all healer

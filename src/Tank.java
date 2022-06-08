@@ -21,6 +21,8 @@ public class Tank extends Characters{
         setWeaponsRandomly(weapons);
         inventoryTank.add(weapons);
         setVisible(true);
+        setStunned(false);
+        setInTheGame(true);
     }
     public Tank(){
 

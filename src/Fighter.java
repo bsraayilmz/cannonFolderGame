@@ -42,6 +42,8 @@ public class Fighter extends Characters{
         setWeaponsRandomly(weapons);
         inventoryFighter.add(weapons);
         setVisible(true);
+        setStunned(false);
+        setInTheGame(true);
     }
     public Fighter(){
     }
