@@ -35,7 +35,6 @@ public class Swords extends Weapons {
     public void special(Characters characters, Characters character){
         System.out.println("Your character used this sword's special ability." +
                 "\nYour character will not take any damage this turn.");
-        character.setVisible(false);
     }
 
     @Override

@@ -41,16 +41,13 @@ public class Characters implements Playable{
     ArrayList<Fighter> fighterArrayList = new ArrayList<>();
 
     static ArrayList<Characters> ChosenChar = new ArrayList<>();
+    static ArrayList<Characters> AlwaysWithYou = new ArrayList<>();
     protected int idChar;
     protected double moneyOfChar;
     protected Weapons weaponsRandomly;
     protected Clothes clothes;
     protected int healthPoint;
-    public void setVisible(boolean visible) {
-        this.visible = visible;
-    }
 
-    private boolean visible;
 
     public String getType() {
         return type;
@@ -292,7 +289,7 @@ public class Characters implements Playable{
 
     }
     public double calculateHealthPoint(int strength, int vitality, int intelligence) {
-        healthPoint = (int) ((int )(8*0.7 * vitality) + (8*0.2 * strength) + (8*0.1 * intelligence));
+        healthPoint = (int) ((int )(5*0.7 * vitality) + (5*0.2 * strength) + (5*0.1 * intelligence));
         setRestHealthPoint(healthPoint);
         return healthPoint;
     }
@@ -366,6 +363,8 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterFighter.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterFighter);
+                AlwaysWithYou.add(characterFighter);
+
                 Dungeon.EnemyInBattle.add(characterFighter);
                 System.out.println("added in array ");
                 controlCharForTankAndHealer();
@@ -380,6 +379,7 @@ public class Characters implements Playable{
                 characterFighter.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterFighter);
                 Dungeon.EnemyInBattle.add(characterFighter);
+                AlwaysWithYou.add(characterFighter);
                 System.out.println("added in array ");
                 controlCharForTankAndHealer();
                 break;
@@ -393,6 +393,7 @@ public class Characters implements Playable{
                 characterFighter.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterFighter);
                 Dungeon.EnemyInBattle.add(characterFighter);
+                AlwaysWithYou.add(characterFighter);
                 System.out.println("added in array ");
                 controlCharForTankAndHealer();
 
@@ -407,6 +408,7 @@ public class Characters implements Playable{
                 characterFighter.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterFighter);
                 Dungeon.EnemyInBattle.add(characterFighter);
+                AlwaysWithYou.add(characterFighter);
                 System.out.println("added in array ");
                 controlCharForTankAndHealer();
                 break;
@@ -441,6 +443,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterTank.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterTank);
+                AlwaysWithYou.add(characterTank);
                 Dungeon.EnemyInBattle.add(characterTank);
                 System.out.println("added in array ");
 
@@ -454,6 +457,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterTank.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterTank);
+                AlwaysWithYou.add(characterTank);
                 Dungeon.EnemyInBattle.add(characterTank);
                 System.out.println("added in array ");
                 break;
@@ -467,6 +471,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterTank.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterTank);
+                AlwaysWithYou.add(characterTank);
                 Dungeon.EnemyInBattle.add(characterTank);
                 System.out.println("added in array ");
 
@@ -480,6 +485,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterTank.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterTank);
+                AlwaysWithYou.add(characterTank);
                 Dungeon.EnemyInBattle.add(characterTank);
                 System.out.println("added in array ");
                 break;
@@ -513,6 +519,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterHealer.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterHealer);
+                AlwaysWithYou.add(characterHealer);
                 Dungeon.EnemyInBattle.add(characterHealer);
                 System.out.println("added in array ");
                 break;
@@ -525,6 +532,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterHealer.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterHealer);
+                AlwaysWithYou.add(characterHealer);
                 Dungeon.EnemyInBattle.add(characterHealer);
                 System.out.println("added in array ");
                 break;
@@ -537,6 +545,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterHealer.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterHealer);
+                AlwaysWithYou.add(characterHealer);
                 Dungeon.EnemyInBattle.add(characterHealer);
                 System.out.println("added in array ");
                 break;
@@ -549,6 +558,7 @@ public class Characters implements Playable{
                 takeRandomlyItemMenu();
                 characterHealer.getWeaponsRandomly().printInfoForWeapons();
                 ChosenChar.add(characterHealer);
+                AlwaysWithYou.add(characterHealer);
                 Dungeon.EnemyInBattle.add(characterHealer);
                 System.out.println(characterHealer.name + "added in array ");
                 break;
@@ -569,7 +579,7 @@ public class Characters implements Playable{
         System.out.println();
         System.out.println("Loading your randomly weapons... ");
         try {
-            Thread.sleep(5000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
@@ -584,9 +594,6 @@ public class Characters implements Playable{
         System.out.println("Rest Health Point: " + healthPoint);
     }
 
-    public boolean isVisible() {
-        return visible;
-    }
 
 
 
