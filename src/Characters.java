@@ -35,7 +35,16 @@ public class Characters implements Playable{
     protected int vitality;
     protected int intelligence;
     protected int strength;
-    protected int dexerity = secureRandom.nextInt(1,10);;
+
+    public int getMaxHP() {
+        return maxHP;
+    }
+
+    public void setMaxHP(int maxHP) {
+        this.maxHP = maxHP;
+    }
+
+    protected int maxHP;
     ArrayList<Healer> healerArrayList = new ArrayList<>();
     ArrayList<Tank> tankArrayList = new ArrayList<>();
     ArrayList<Fighter> fighterArrayList = new ArrayList<>();
@@ -80,14 +89,6 @@ public class Characters implements Playable{
         this.type = type;
     }
 
-
-    public int getDexerity() {
-        return dexerity;
-    }
-
-    public void setDexerity(int dexerity) {
-        this.dexerity = dexerity;
-    }
 
     public int getIdChar() {
         return idChar;
@@ -228,7 +229,12 @@ public class Characters implements Playable{
     }
 
     public void setHealthPoint(int healthPoint) {
-        this.healthPoint = healthPoint;
+        if (this.healthPoint+healthPoint>maxHP){
+            this.healthPoint=maxHP;
+        }
+        else {
+            this.healthPoint+=healthPoint;
+        }
     }
 
 
@@ -238,7 +244,7 @@ public class Characters implements Playable{
 
         weaponsRandomly.displaySwordsInfo();
         setWeaponsRandomly(weaponsRandomly.getSwordsList().get(secureRandom.nextInt(0, 3)));
-
+        Playable.onHand[0]=getWeaponsRandomly();
         Fighter cammy = new Fighter("Fighter", 1, "Cammy", 20, getWeaponsRandomly());
         Fighter frost = new Fighter("Fighter", 2, "Frost", 30, getWeaponsRandomly());
         Fighter harley = new Fighter("Fighter", 3, "Harley", 15, getWeaponsRandomly());
@@ -263,6 +269,7 @@ public class Characters implements Playable{
     //the method shows that all information of the character tank in the game.
     public void submitInfoForTank() {
         weaponsRandomly.displayShieldsInfo();
+        Playable.onHand[0]=getWeaponsRandomly();
         setWeaponsRandomly(weaponsRandomly.getShieldsList().get(secureRandom.nextInt(0, 3)));
         Tank hulk = new Tank("Tank", 1, "Hulk", 24, getWeaponsRandomly());
         Tank annie = new Tank("Tank", 2, "Annie..", 35, getWeaponsRandomly());
@@ -283,6 +290,7 @@ public class Characters implements Playable{
     //the method shows that all information of the character healer in the game.
     public void submitInfoForHealer() {
         weaponsRandomly.displayWandsInfo();
+        Playable.onHand[0]=getWeaponsRandomly();
         setWeaponsRandomly(weaponsRandomly.getWandsList().get(secureRandom.nextInt(0, 3)));
         Healer byron = new Healer("Healer", 1, "Byron", 20, getWeaponsRandomly());
         Healer baika = new Healer("Healer", 2, "Baika", 40, getWeaponsRandomly());

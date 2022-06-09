@@ -32,10 +32,10 @@ public class Swords extends Weapons {
             swords.printInfo();
         }
     }
-    public void special(Characters characters, Characters character){
+    public void special(Characters characters){
         System.out.println("Your character used this sword's special ability." +
                 "\nYour character will not take any damage this turn.");
-        character.setInTheGame(false);
+        characters.setInTheGame(false);
     }
 
     @Override

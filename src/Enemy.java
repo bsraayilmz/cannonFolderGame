@@ -13,7 +13,7 @@ public class Enemy extends Characters{
                 setIntelligence(intelligenceLevelForEnemy);
                 setWeaponsRandomly(weapons);
                 inventoryFighter.add(weapons);
-                setVisible(true);
+
             }
 
 
@@ -30,8 +30,9 @@ public class Enemy extends Characters{
         @Override
         public int attack(Weapons weapons){
                 for(int i=0; i<Dungeon.EnemyInBattle.size();i++){
+                        if(Dungeon.EnemyInBattle.get(i).getKind()==4){
                         weapons = Dungeon.EnemyInBattle.get(i).getWeaponsRandomly();
-                }
+                }}
                 return weapons.calculateDamageLevel();
         }
 
