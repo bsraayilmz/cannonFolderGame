@@ -20,7 +20,7 @@ public class Healer extends Characters{
         setStunned(false);
         setInTheGame(true);
         inventoryWeight = 0;
-
+        maxHP=healthPoint;
     }
     //to display all healer
     @Override
@@ -38,8 +38,7 @@ public class Healer extends Characters{
     public void printInfo() {
         super.printInfo();
         System.out.print( " \tStrength Level: "+  strengthLevelForHealer + " \tVitality Level: " + vitalityLevelForHealer+
-                " \tIntelligence Level: " + intelligenceLevelForHealer +"\t" +"Health point: "+  calculateHealthPoint(strengthLevelForHealer,vitalityLevelForHealer,intelligenceLevelForHealer)+
-                "\t Dexerity Level: " + getDexerity() + "\n");
+                " \tIntelligence Level: " + intelligenceLevelForHealer +"\t" +"Health point: "+  calculateHealthPoint(strengthLevelForHealer,vitalityLevelForHealer,intelligenceLevelForHealer)+ "\n");
     }
     @Override
     public double calculateHealthPoint(int strength, int vitality, int intelligence) {

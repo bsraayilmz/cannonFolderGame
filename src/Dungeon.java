@@ -1,5 +1,6 @@
 import java.security.SecureRandom;
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Scanner;
 public class Dungeon {
     SecureRandom secureRandom = new SecureRandom();
@@ -10,7 +11,7 @@ public class Dungeon {
     //int turn = 1;
     int enemyNumber = 1;
     int floorNumber = 0;
-
+    int indexOfChar = 0;
 
     public void displayDungeonInfo() {
         while (Characters.ChosenChar.size()>0) {
@@ -25,7 +26,27 @@ public class Dungeon {
                 System.out.println("*******************************************");
                 System.out.println("Well done! You can successfully passed the level " + (floorNumber + 1));
                 System.out.println("*******************************************");
-                //menuStore();
+                    if(floorNumber%2==0){
+                        System.out.println("------------------------------");
+                        System.out.println();
+                        System.out.println("We have a gift..! Huhuuuuuwww :) ".toUpperCase(Locale.ROOT));
+                        System.out.println();
+                        int randomWeaponForNextLevels = secureRandom.nextInt(1,12);
+                        Weapons.weaponsAll.get(randomWeaponForNextLevels).printInfo();
+                        System.out.println("Do you want to take it? YES <1> or NO <2>");
+                        int yesOrNo =input.nextInt();
+                        if(yesOrNo==1){
+                            System.out.println("YEEEEEESSS, YOU TOOK IT :) ");
+                            EnemyInBattle.get(0).Inventory.add(Weapons.weaponsAll.get(randomWeaponForNextLevels));
+                            EnemyInBattle.get(0).listInventory(Playable.Inventory);
+                        }
+                        else if(yesOrNo == 2){
+                            System.out.println("Well... You know :( ");
+                        }
+                        else{
+                            System.out.println("Please select a valid value..!");
+                        }
+                    }
 
             }
             try {
@@ -194,11 +215,14 @@ public class Dungeon {
             System.out.println("\tID: " + Characters.ChosenChar.get(i).getKind() + "\tName: " +
                     Characters.ChosenChar.get(i).getName() + "\tHealth point: " + Characters.ChosenChar.get(i).getRestHealthPoint());
         }
-
+        for (Characters characters : EnemyInBattle) {
+            characters.setInTheGame(true);
+        }
         int chooseWith = input.nextInt();
         if (chooseWith == 1 ) {
             for (int j = 0; j < EnemyInBattle.size(); j++) {
-                if (EnemyInBattle.get(j).getKind() == 1 ) {
+                if (EnemyInBattle.get(j).getKind() == 1) {
+                    indexOfChar = j;
                     actionOrder.add(EnemyInBattle.get(j));
                     System.out.println("You will use as a character " + EnemyInBattle.get(j).getName() + " to fight with enemies ");
                     System.out.println("Character list in the battle area");
@@ -212,9 +236,9 @@ public class Dungeon {
 
         }
         else if (chooseWith == 2) {
-            System.out.println("okay");
             for (int j = 0; j < EnemyInBattle.size(); j++) {
                 if (EnemyInBattle.get(j).getKind() == 2 ) {
+                    indexOfChar = j;
                     actionOrder.add(EnemyInBattle.get(j));
                     System.out.println("You will use as a character " + EnemyInBattle.get(j).getName() + " to fight with enemies ");
                     System.out.println("Character list in the battle area");
@@ -228,11 +252,9 @@ public class Dungeon {
             }
             yourTurn();
         } else if (chooseWith == 3) {
-            System.out.println("okay");
             for (int j = 0; j < EnemyInBattle.size(); j++) {
-                System.out.println("okay2");
                 if (EnemyInBattle.get(j).getKind() == 3 ) {
-                    System.out.println("okay3");
+                    indexOfChar = j;
                     actionOrder.add(EnemyInBattle.get(j));
                     System.out.println("You will use as a character " + EnemyInBattle.get(j).getName() + " to fight with enemies ");
                     System.out.println("Character list in the battle area");
@@ -274,7 +296,7 @@ public class Dungeon {
 
                             Here what you can do:
                             1-Attack
-                            2-Weapon's Speacial Move""");
+                            2-Weapon's Special Move""");
                 }
                 int attackOrSpecial = input.nextInt();
                 if (attackOrSpecial == 1) {
@@ -331,8 +353,30 @@ public class Dungeon {
                     }
 
                 }
+
                 else if (attackOrSpecial == 2){
-                    //Burası special kısmı..
+
+                    if(EnemyInBattle.get(indexOfChar).onHand[0].getKindWeapon()==1){
+                        EnemyInBattle.get(indexOfChar).onHand[0].special(EnemyInBattle.get(indexOfChar));
+                    }
+                    else if(EnemyInBattle.get(indexOfChar).onHand[0].getKindWeapon()==2){
+                        for (int m =0;m<EnemyInBattle.size();m++){
+                            if (EnemyInBattle.get(m).getKind()==4){
+                                EnemyInBattle.get(indexOfChar).onHand[0].special(EnemyInBattle.get(m));
+                                break;
+                            }
+                        }
+
+                    }
+                    else if(EnemyInBattle.get(indexOfChar).onHand[0].getKindWeapon()==3){
+                        System.out.println("Character list in the battle area");
+                        for (int n = 0; n < EnemyInBattle.size(); n++) {
+                            System.out.println((n + 1) + "-" + " " + EnemyInBattle.get(n).getName());
+                        }
+                        System.out.println("Which character do you want to heal?");
+                        int choiceToHeal = input.nextInt();
+                        EnemyInBattle.get(indexOfChar).onHand[0].special(EnemyInBattle.get(indexOfChar),EnemyInBattle.get(choiceToHeal));
+                    }
                 }
                 else {
                     System.out.print("Please enter a valid value to kill the enemies: ");
@@ -370,6 +414,7 @@ public class Dungeon {
                 floorNumber++;
                 enemyNumber*=2;
                 displayDungeonInfo();
+
                 //menuForWeapon
             }
         }

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public interface Playable {
     Weapons[] onHand = new Weapons[1];
     Clothes[] onBody = new Clothes[1];
-    ArrayList<Items> Inventory = new ArrayList<>();
+    static ArrayList<Items> Inventory = new ArrayList<>();
 
     default void addWeapons(Weapons weapons){
         onHand[0] = weapons;
@@ -16,5 +16,4 @@ public interface Playable {
             items.printInfo();
         }
     }
-
 }

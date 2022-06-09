@@ -166,11 +166,9 @@ public class Weapons extends Items{
     public void setSwordsList(ArrayList<Swords> swordsList) {
         this.swordsList = swordsList;
     }
-    public void special(Characters holder, Character effected){
-    }
-    public void special(Characters character,int turn){
 
-    }
-    public void special(Characters characters, Characters character){}
+    public void special(Characters characters){}
+
+    public void special(Characters holder, Characters effected){}
 }
 

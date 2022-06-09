@@ -23,7 +23,7 @@ public class Shields extends Weapons{
             shields.printInfo();
         }
     }
-    public void special (Characters character,int turn){
+    public void special (Characters character){
         System.out.println("Your character used this shield's special ability." +
                 "\nThe character you have chooseAttackOrSpecial will stunned for 3 turn.");
         character.setStunned(true);

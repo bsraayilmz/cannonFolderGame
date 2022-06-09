@@ -40,8 +40,7 @@ public class Tank extends Characters{
     public void printInfo() {
        super.printInfo();
             System.out.print( " \tStrength Level: "+  strengthLevelForTank + " \tVitality Level: " + vitalityLevelForTank+
-                    " \tIntelligence Level: " + intelligenceLevelForTank +"\t" +"Health point: "+  calculateHealthPoint(strengthLevelForTank,vitalityLevelForTank,intelligenceLevelForTank)+
-                    " \tDexerity Level: " + getDexerity() + "\n");
+                    " \tIntelligence Level: " + intelligenceLevelForTank +"\t" +"Health point: "+  calculateHealthPoint(strengthLevelForTank,vitalityLevelForTank,intelligenceLevelForTank)+ "\n");
 
     }
     @Override
