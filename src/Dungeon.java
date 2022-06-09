@@ -39,6 +39,7 @@ public class Dungeon {
             System.out.println("You are on dungeon " + floorNumber + "\n\n" +
                     "There are " + enemyNumber + " enemy in front of you.");
             System.out.println();
+            setZero(actionOrder);
             addEnemyAlg();
         }
 
@@ -329,7 +330,11 @@ public class Dungeon {
                         }
                     }
 
-                } else {
+                }
+                else if (attackOrSpecial == 2){
+                    //Burası special kısmı..
+                }
+                else {
                     System.out.print("Please enter a valid value to kill the enemies: ");
                     chooseAttackOrSpecial();
                 }
@@ -367,5 +372,18 @@ public class Dungeon {
                 displayDungeonInfo();
                 //menuForWeapon
             }
+        }
+        public static void setZero(ArrayList<Characters>actionOrder){
+            for (Characters characters : actionOrder) {
+                if (characters.isStunned()) {
+                    characters.setStunned(false);
+                }
+            }
+            for (Characters characters : actionOrder) {
+                if (!characters.getInTheGame()) {
+                    characters.setInTheGame(true);
+                }
+            }
+
         }
     }

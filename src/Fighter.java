@@ -28,7 +28,7 @@ public class Fighter extends Characters{
         super.printInfo();
         System.out.print( " \tStrength Level: "+  strengthLevelForFighter + " \tVitality Level: " + vitalityLevelForFighter+
                 " \tIntelligence Level: " + intelligenceLevelForFighter  + "\t" +"Health point: "+  calculateHealthPoint(strengthLevelForFighter,vitalityLevelForFighter,intelligenceLevelForFighter)
-        + "\n");
+        + "\tDexerity Level : " + getDexerity() + "\n");
             }
     public Fighter(String type,int ID, String name, double money, Weapons weapons){
         setKind(1);
@@ -41,17 +41,18 @@ public class Fighter extends Characters{
         setIntelligence(intelligenceLevelForFighter);
         setWeaponsRandomly(weapons);
         inventoryFighter.add(weapons);
+        setVisible(true);
+        setStunned(false);
+        setInTheGame(true);
+        inventoryWeight = 0;
     }
     public Fighter(){
     }
 
     @Override
     public int attack(Weapons weapons) {
-        for(int i=0; i<Dungeon.EnemyInBattle.size();i++){
-            if(Dungeon.EnemyInBattle.get(i).getKind()==1){
-                weapons = Dungeon.EnemyInBattle.get(i).getWeaponsRandomly();
-            }
-        }return weapons.calculateDamageLevel();
+        weapons = Dungeon.EnemyInBattle.get(0).getWeaponsRandomly();
+        return weapons.calculateDamageLevel();
 
     }
 }

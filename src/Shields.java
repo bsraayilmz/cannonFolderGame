@@ -1,16 +1,16 @@
 import java.util.Locale;
 
 public class Shields extends Weapons{
-    public Shields(int ID, String nameWeapon, double weight, double moneyOfWeapon){
+    public Shields(int ID, String nameWeapon, int weight, double moneyOfWeapon){
         super(ID,nameWeapon,weight,moneyOfWeapon);
         setKindWeapon(2);
     }
 
     @Override
-    public void printInfoForWeapons() {
+    public void printInfo() {
         System.out.println();
         System.out.println("Information of the Shields: ".toUpperCase(Locale.ROOT));
-        super.printInfoForWeapons();
+        super.printInfo();
         System.out.println();
     }
     public Shields() {
@@ -20,13 +20,13 @@ public class Shields extends Weapons{
     @Override
     public void displayInfoForAllWeapons() {
         for(Shields shields : shieldsList){
-            shields.printInfoForWeapons();
+            shields.printInfo();
         }
     }
     public void special (Characters character,int turn){
         System.out.println("Your character used this shield's special ability." +
                 "\nThe character you have chooseAttackOrSpecial will stunned for 3 turn.");
-        character.setStunned(true,turn);
+        character.setStunned(true);
     }
 
     @Override

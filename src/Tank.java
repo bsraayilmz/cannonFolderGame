@@ -20,6 +20,10 @@ public class Tank extends Characters{
         setIntelligence(intelligenceLevelForTank);
         setWeaponsRandomly(weapons);
         inventoryTank.add(weapons);
+        setVisible(true);
+        setStunned(false);
+        setInTheGame(true);
+        inventoryWeight = 0;
     }
     public Tank(){
 
@@ -47,11 +51,8 @@ public class Tank extends Characters{
     }
     @Override
     public int attack(Weapons weapons){
-        for(int i=0; i<Dungeon.EnemyInBattle.size();i++){
-            if(Dungeon.EnemyInBattle.get(i).getKind()==2){
-                weapons = Dungeon.EnemyInBattle.get(i).getWeaponsRandomly();
-            }
-        }return weapons.calculateDamageLevel();
+        weapons = Dungeon.EnemyInBattle.get(1).getWeaponsRandomly();
+        return weapons.calculateDamageLevel();
     }
 
 }

@@ -16,6 +16,11 @@ public class Healer extends Characters{
         setIntelligence(intelligenceLevelForHealer);
         setWeaponsRandomly(weapons);
         inventoryHealer.add(weapons);
+        setVisible(true);
+        setStunned(false);
+        setInTheGame(true);
+        inventoryWeight = 0;
+
     }
     //to display all healer
     @Override
@@ -43,11 +48,7 @@ public class Healer extends Characters{
     }
     @Override
     public int attack(Weapons weapons){
-        for(int i=0; i<Dungeon.EnemyInBattle.size();i++){
-            if(Dungeon.EnemyInBattle.get(i).getKind()==3){
-                weapons = Dungeon.EnemyInBattle.get(i).getWeaponsRandomly();
-            }
-        }return weapons.calculateDamageLevel();
-
+        weapons = Dungeon.EnemyInBattle.get(2).getWeaponsRandomly();
+        return weapons.calculateDamageLevel();
     }
 }
