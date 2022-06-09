@@ -47,7 +47,12 @@ public class Healer extends Characters{
     }
     @Override
     public int attack(Weapons weapons){
-        weapons = Dungeon.EnemyInBattle.get(2).getWeaponsRandomly();
+        for (int i = 0 ; i<Dungeon.EnemyInBattle.size() ; i++){
+            if(Dungeon.EnemyInBattle.get(i).getKind()==3){
+                weapons = Dungeon.EnemyInBattle.get(i).getWeaponsRandomly();
+            }
+        }
+
         return weapons.calculateDamageLevel();
     }
 }

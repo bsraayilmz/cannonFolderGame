@@ -1,8 +1,8 @@
 import java.util.Locale;
 
 public class Swords extends Weapons {
-    public Swords(int ID, String nameWeapon, int weight, double moneyWeapon) {
-        super(ID, nameWeapon, weight, moneyWeapon);
+    public Swords( String nameWeapon) {
+        super(nameWeapon);
         setKindWeapon(1);
     }
 
@@ -22,9 +22,6 @@ public class Swords extends Weapons {
         return damageLevel;
     }*/
 
-    public Swords() {
-
-    }
 
     @Override
     public void displayInfoForAllWeapons() {

@@ -51,7 +51,11 @@ public class Fighter extends Characters{
 
     @Override
     public int attack(Weapons weapons) {
-        weapons = Dungeon.EnemyInBattle.get(0).getWeaponsRandomly();
+        for (int i = 0 ; i<Dungeon.EnemyInBattle.size() ; i++){
+            if(Dungeon.EnemyInBattle.get(i).getKind()==1){
+                weapons = Dungeon.EnemyInBattle.get(i).getWeaponsRandomly();
+            }
+        }
         return weapons.calculateDamageLevel();
 
     }

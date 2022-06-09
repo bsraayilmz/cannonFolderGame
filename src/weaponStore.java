@@ -1,7 +1,7 @@
 public class weaponStore extends ItemStore {
 
-    Swords swords = new Swords(1, "",5,20 );
-    Weapons weapons = new Weapons();
+    Swords swords = new Swords( "Sword");
+    Weapons weapons = new Weapons("Weapon");
 
     weaponStore(Characters characters,Weapons weapons ) {
         super(characters);

@@ -8,10 +8,27 @@ public class Dungeon {
     static ArrayList<Characters> EnemyInBattle = new ArrayList<>();
     static ArrayList<Characters> actionOrder = new ArrayList<>();
     static ArrayList<Characters> enemyKilled = new ArrayList<>();
+
     //int turn = 1;
     int enemyNumber = 1;
     int floorNumber = 0;
     int indexOfChar = 0;
+
+    public Items randomWeapon(Weapons weapon){
+
+            int randomWeapon = secureRandom.nextInt(1,4);
+            if (randomWeapon==1){
+                return weapon = new Swords("Sword");
+            }
+            else if (randomWeapon==2){
+                return weapon = new Shields("Shield");
+            }
+            else {
+                return weapon = new Wands("Wand");
+            }
+
+        }
+
 
     public void displayDungeonInfo() {
         while (Characters.ChosenChar.size()>0) {
@@ -31,13 +48,11 @@ public class Dungeon {
                         System.out.println();
                         System.out.println("We have a gift..! Huhuuuuuwww :) ".toUpperCase(Locale.ROOT));
                         System.out.println();
-                        int randomWeaponForNextLevels = secureRandom.nextInt(1,12);
-                        Weapons.weaponsAll.get(randomWeaponForNextLevels).printInfo();
                         System.out.println("Do you want to take it? YES <1> or NO <2>");
                         int yesOrNo =input.nextInt();
                         if(yesOrNo==1){
                             System.out.println("YEEEEEESSS, YOU TOOK IT :) ");
-                            EnemyInBattle.get(0).Inventory.add(Weapons.weaponsAll.get(randomWeaponForNextLevels));
+                            EnemyInBattle.get(0).Inventory.add(randomWeapon(new Weapons("Weapon")));
                             EnemyInBattle.get(0).listInventory(Playable.Inventory);
                         }
                         else if(yesOrNo == 2){
@@ -112,7 +127,7 @@ public class Dungeon {
                         }
                     }
                     //Enemy's Battle Ranking:
-                    if (isTankAlive) {
+                    if (isTankAlive && EnemyInBattle.get(indexOfTank).getInTheGame()) {
                         System.out.println();
                         System.out.println("Enemy is attacking to " + EnemyInBattle.get(indexOfTank).getName());
                         if(enemyNumber>1){
@@ -146,7 +161,7 @@ public class Dungeon {
                          break;
                     }}
 
-                    else if (!isTankAlive && isFighterAlive) {
+                    else if (!isTankAlive && isFighterAlive && EnemyInBattle.get(indexOfFighter).getInTheGame()) {
                         System.out.println();
                         System.out.println("Enemy is attacking " + EnemyInBattle.get(indexOfFighter).getName());
                         EnemyInBattle.get(indexOfEnemies).attack(EnemyInBattle.get(indexOfEnemies).getWeaponsRandomly());
@@ -172,7 +187,7 @@ public class Dungeon {
                             }
 
                         break;
-                    } else if (!isTankAlive && !isFighterAlive && isHealerAlive) {
+                    } else if (!isTankAlive && !isFighterAlive && isHealerAlive && EnemyInBattle.get(indexOfHealer).getInTheGame()) {
                         System.out.println();
                         System.out.println("Enemy is attacking " + EnemyInBattle.get(indexOfHealer).getName());
                         EnemyInBattle.get(indexOfEnemies).attack(EnemyInBattle.get(indexOfEnemies).getWeaponsRandomly());
@@ -222,6 +237,7 @@ public class Dungeon {
         if (chooseWith == 1 ) {
             for (int j = 0; j < EnemyInBattle.size(); j++) {
                 if (EnemyInBattle.get(j).getKind() == 1) {
+                    EnemyInBattle.get(j).setInTheGame(true);
                     indexOfChar = j;
                     actionOrder.add(EnemyInBattle.get(j));
                     System.out.println("You will use as a character " + EnemyInBattle.get(j).getName() + " to fight with enemies ");
@@ -238,6 +254,7 @@ public class Dungeon {
         else if (chooseWith == 2) {
             for (int j = 0; j < EnemyInBattle.size(); j++) {
                 if (EnemyInBattle.get(j).getKind() == 2 ) {
+                    EnemyInBattle.get(j).setInTheGame(true);
                     indexOfChar = j;
                     actionOrder.add(EnemyInBattle.get(j));
                     System.out.println("You will use as a character " + EnemyInBattle.get(j).getName() + " to fight with enemies ");
@@ -254,6 +271,7 @@ public class Dungeon {
         } else if (chooseWith == 3) {
             for (int j = 0; j < EnemyInBattle.size(); j++) {
                 if (EnemyInBattle.get(j).getKind() == 3 ) {
+                    EnemyInBattle.get(j).setInTheGame(true);
                     indexOfChar = j;
                     actionOrder.add(EnemyInBattle.get(j));
                     System.out.println("You will use as a character " + EnemyInBattle.get(j).getName() + " to fight with enemies ");
@@ -305,7 +323,7 @@ public class Dungeon {
                     for (int j = 0; j < EnemyInBattle.size(); j++) {
                         if (EnemyInBattle.get(j).getKind() == 1) {
                             restHealthPoint = (int) EnemyInBattle.get(i).getHealthPoint() -
-                                    actionOrder.get(j).attack(EnemyInBattle.get(j).getWeaponsRandomly());
+                                    EnemyInBattle.get(j).attack(EnemyInBattle.get(j).getWeaponsRandomly());
                             if (restHealthPoint <= 0) {
                                 enemyKilled.add(EnemyInBattle.get(i));
                                 EnemyInBattle.remove(EnemyInBattle.get(i));
@@ -334,9 +352,9 @@ public class Dungeon {
                                 battleForEnemy();
                             }
                             break;
-                        } else if (actionOrder.get(j).getKind() == 3) {
+                        } else if (EnemyInBattle.get(j).getKind() == 3) {
                             restHealthPoint = (int) EnemyInBattle.get(i).getHealthPoint() -
-                                    actionOrder.get(j).attack(actionOrder.get(j).getWeaponsRandomly());
+                                    EnemyInBattle.get(j).attack(EnemyInBattle.get(j).getWeaponsRandomly());
                             if (restHealthPoint <= 0) {
                                 enemyKilled.add(EnemyInBattle.get(i));
                                 EnemyInBattle.remove(EnemyInBattle.get(i));
@@ -357,18 +375,23 @@ public class Dungeon {
                 else if (attackOrSpecial == 2){
 
                     if(EnemyInBattle.get(indexOfChar).onHand[0].getKindWeapon()==1){
+                        EnemyInBattle.get(indexOfChar).onHand[0].printInfo();
                         EnemyInBattle.get(indexOfChar).onHand[0].special(EnemyInBattle.get(indexOfChar));
+                        System.out.println(EnemyInBattle.get(indexOfChar).getName() + " has used his swords to avoid attack");
                     }
                     else if(EnemyInBattle.get(indexOfChar).onHand[0].getKindWeapon()==2){
+                        EnemyInBattle.get(indexOfChar).onHand[0].printInfo();
                         for (int m =0;m<EnemyInBattle.size();m++){
                             if (EnemyInBattle.get(m).getKind()==4){
                                 EnemyInBattle.get(indexOfChar).onHand[0].special(EnemyInBattle.get(m));
+                                System.out.println(EnemyInBattle.get(indexOfChar).getName()+" has used his shield to stun " + EnemyInBattle.get(m).getName() );
                                 break;
                             }
                         }
 
                     }
                     else if(EnemyInBattle.get(indexOfChar).onHand[0].getKindWeapon()==3){
+                        EnemyInBattle.get(indexOfChar).onHand[0].printInfo();
                         System.out.println("Character list in the battle area");
                         for (int n = 0; n < EnemyInBattle.size(); n++) {
                             System.out.println((n + 1) + "-" + " " + EnemyInBattle.get(n).getName());

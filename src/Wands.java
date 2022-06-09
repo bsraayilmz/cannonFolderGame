@@ -5,9 +5,9 @@ public class Wands extends Weapons{
     SecureRandom secureRandom = new SecureRandom();
     int healPoint;
 
-    public Wands(int ID, String name, int weight, double moneyOfWeapon){
+    public Wands(String name){
 
-        super(ID,name,weight,moneyOfWeapon);
+        super(name);
         healPoint = secureRandom.nextInt(1,5);
         setKindWeapon(3);
     }
@@ -15,12 +15,10 @@ public class Wands extends Weapons{
     @Override
     public void printInfo() {
         System.out.println();
-        System.out.println("Information of the Swords: ".toUpperCase(Locale.ROOT));
+        System.out.println("Information of the Wand: ".toUpperCase(Locale.ROOT));
+        System.out.println("Heal point of the Wand: " + healPoint);
         super.printInfo();
         System.out.println();
-    }
-    public Wands() {
-
     }
 
     @Override
