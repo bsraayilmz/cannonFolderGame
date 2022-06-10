@@ -34,14 +34,4 @@ public class Swords extends Weapons {
                 "\nYour character will not take any damage this turn.");
         characters.setInTheGame(false);
     }
-
-    @Override
-    public int calculateDamageLevel() {
-            int damage=1;
-            for (Characters characters : Dungeon.EnemyInBattle) {
-                characters.getWeaponsRandomly().setDamageLevel(characters.getStrength() * getDamageLevel());
-                damage = (int) characters.getWeaponsRandomly().getDamageLevel();
-            }
-            return damage;
-        }
     }

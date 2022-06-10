@@ -7,6 +7,9 @@ public class Characters{
     Weapons[] onHand = new Weapons[1];
     Clothes[] onBody = new Clothes[1];
     ArrayList<Items> Inventory = new ArrayList<>();
+    Weapons weapon = new Swords("Sword");
+    Weapons weapon1 = new Shields("Shield");
+    Weapons weapon2 = new Wands("Wand");
 
     public void addWeapons(Weapons weapons){
         onHand[0] = weapons;
@@ -28,13 +31,6 @@ public class Characters{
     ArrayList<Weapons> inventoryHealer = new ArrayList<>();
     static Dungeon dungeon = new Dungeon();
     int restHealthPoint;
-    public int getRestHealthPoint() {
-        return restHealthPoint;
-    }
-
-    public void setRestHealthPoint(int restHealthPoint) {
-        this.restHealthPoint = restHealthPoint;
-    }
 
     protected String type;
 
@@ -323,9 +319,8 @@ public class Characters{
         naruti.printInfo();
 
     }
-    public double calculateHealthPoint(int strength, int vitality, int intelligence) {
+    public int calculateHealthPoint(int strength, int vitality, int intelligence) {
         healthPoint = (int) ((int )(8*0.7 * vitality) + (8*0.2 * strength) + (8*0.1 * intelligence));
-        setRestHealthPoint(healthPoint);
         return healthPoint;
     }
 
@@ -396,7 +391,7 @@ public class Characters{
                         " \tVitality: " + characterFighter.getVitality() + " \tIntelligence: " + characterFighter.getIntelligence() +
                         " \tMoney of character : " + characterFighter.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterFighter.onHand[0]=weaponsRandomly.createWeaponRandomly(weaponsRandomly);
+                characterFighter.onHand[0]=weapon;
                 characterFighter.onHand[0].printInfo();
                 //characterFighter.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterFighter);
@@ -411,7 +406,7 @@ public class Characters{
                         " \tVitality: " + characterFighter.getVitality() + " \tIntelligence: " + characterFighter.getIntelligence() +
                         " \tMoney of character : " + characterFighter.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterFighter.onHand[0]=weaponsRandomly.createWeaponRandomly(weaponsRandomly);
+                characterFighter.onHand[0]=weapon;
                 characterFighter.onHand[0].printInfo();
                 //characterFighter.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterFighter);
@@ -426,7 +421,7 @@ public class Characters{
                         " \tVitality: " + characterFighter.getVitality() + " \tIntelligence: " + characterFighter.getIntelligence() +
                         " \tMoney of character : " + characterFighter.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterFighter.onHand[0]=weaponsRandomly.createWeaponRandomly(weaponsRandomly);
+                characterFighter.onHand[0]=weapon;
                 characterFighter.onHand[0].printInfo();
                 //characterFighter.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterFighter);
@@ -442,7 +437,7 @@ public class Characters{
                         " \tVitality: " + characterFighter.getVitality() + " \tIntelligence: " + characterFighter.getIntelligence() +
                         " \tMoney of character : " + characterFighter.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterFighter.onHand[0]=weaponsRandomly.createWeaponRandomly(weaponsRandomly);
+                characterFighter.onHand[0]=weapon;
                 characterFighter.onHand[0].printInfo();
                 //characterFighter.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterFighter);
@@ -479,7 +474,7 @@ public class Characters{
                         " \tVitality: " + characterTank.getVitality() + " \tIntelligence: " + characterTank.getIntelligence() +
                         " \tMoney of character : " + characterTank.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterTank.onHand[0]=weaponsRandomly.createWeaponRandomly(weaponsRandomly);
+                characterTank.onHand[0]= weapon1;
                 characterTank.onHand[0].printInfo();
                 //characterTank.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterTank);
@@ -494,7 +489,7 @@ public class Characters{
                         " \tVitality: " + characterTank.getVitality() + " \tIntelligence: " + characterTank.getIntelligence() +
                         " \tMoney of character : " + characterTank.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterTank.onHand[0]=weaponsRandomly.createWeaponRandomly(weaponsRandomly);
+                characterTank.onHand[0]= weapon1;
                 characterTank.onHand[0].printInfo();
                 //characterTank.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterTank);
@@ -509,7 +504,7 @@ public class Characters{
                         " \tVitality: " + characterTank.getVitality() + " \tIntelligence: " + characterTank.getIntelligence() +
                         " \tMoney of character : " + characterTank.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterTank.onHand[0]=weaponsRandomly.createWeaponRandomly(weaponsRandomly);
+                characterTank.onHand[0]= weapon1;
                 characterTank.onHand[0].printInfo();
                 //characterTank.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterTank);
@@ -524,7 +519,7 @@ public class Characters{
                         " \tVitality: " + characterTank.getVitality() + " \tIntelligence: " + characterTank.getIntelligence() +
                         " \tMoney of character : " + characterTank.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterTank.onHand[0]=weaponsRandomly.createWeaponRandomly(weaponsRandomly);
+                characterTank.onHand[0]= weapon1;
                 characterTank.onHand[0].printInfo();
                 //characterTank.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterTank);
@@ -559,7 +554,7 @@ public class Characters{
                         " \tVitality: " + characterHealer.getVitality() + " \tIntelligence: " + characterHealer.getIntelligence() +
                         " \tMoney of character : " + characterHealer.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterHealer.onHand[0]=weaponsRandomly.createWeaponRandomly(weaponsRandomly);
+                characterHealer.onHand[0]=weapon2;
                 characterHealer.onHand[0].printInfo();
                 //characterHealer.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterHealer);
@@ -573,7 +568,7 @@ public class Characters{
                         " \tVitality: " + characterHealer.getVitality() + " \tIntelligence: " + characterHealer.getIntelligence() +
                         " \tMoney of character : " + characterHealer.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterHealer.onHand[0]=weaponsRandomly.createWeaponRandomly(weaponsRandomly);
+                characterHealer.onHand[0]=weapon2;
                 characterHealer.onHand[0].printInfo();
                 //characterHealer.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterHealer);
@@ -587,7 +582,7 @@ public class Characters{
                         " \tVitality: " + characterHealer.getVitality() + " \tIntelligence: " + characterHealer.getIntelligence() +
                         " \tMoney of character : " + characterHealer.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterHealer.onHand[0]=weaponsRandomly.createWeaponRandomly(weaponsRandomly);
+                characterHealer.onHand[0]=weapon2;
                 characterHealer.onHand[0].printInfo();
                 //characterHealer.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterHealer);
@@ -601,7 +596,7 @@ public class Characters{
                         " \tVitality: " + characterHealer.getVitality() + " \tIntelligence: " + characterHealer.getIntelligence() +
                         " \tMoney of character : " + characterHealer.getMoneyOfChar());
                 takeRandomlyItemMenu();
-                characterHealer.onHand[0]=weaponsRandomly.createWeaponRandomly(weaponsRandomly);
+                characterHealer.onHand[0]=weapon2;
                 characterHealer.onHand[0].printInfo();
                 //characterHealer.getWeaponsRandomly().printInfo();
                 ChosenChar.add(characterHealer);
@@ -630,10 +625,13 @@ public class Characters{
             Thread.currentThread().interrupt();
         }
     }
+    public int attack(){return 0;}
 
-    public int attack(Weapons weapons) {
-        return 0;
+
+    public void takeDamage(int damage){
+        healthPoint = healthPoint - damage;
     }
+
 
 
 }

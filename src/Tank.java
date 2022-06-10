@@ -44,18 +44,13 @@ public class Tank extends Characters{
 
     }
     @Override
-    public double calculateHealthPoint(int strength, int vitality, int intelligence) {
+    public int calculateHealthPoint(int strength, int vitality, int intelligence) {
         super.calculateHealthPoint(strengthLevelForTank, vitalityLevelForTank, intelligenceLevelForTank);
         return healthPoint;
     }
     @Override
-    public int attack(Weapons weapons){
-        for (int i = 0 ; i<Dungeon.EnemyInBattle.size() ; i++){
-            if(Dungeon.EnemyInBattle.get(i).getKind()==2){
-                weapons = Dungeon.EnemyInBattle.get(i).getWeaponsRandomly();
-            }
-        }
-        return weapons.calculateDamageLevel();
+    public int attack(){
+        return (int) (super.onHand[0].getDamage()+this.strength);
     }
 
 }

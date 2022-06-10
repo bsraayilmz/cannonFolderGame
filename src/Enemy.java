@@ -4,15 +4,14 @@ public class Enemy extends Characters{
         int vitalityLevelForEnemy = secureRandom.nextInt(1,5);
         int intelligenceLevelForEnemy = secureRandom.nextInt(1,5);
 
-        public Enemy(String name, Weapons weapons){
+        public Enemy(String name){
                 setName(name);
                 setKind(4);
                 setType(type);
                 setStrength(strengthLevelForEnemy);
                 setVitality(vitalityLevelForEnemy);
                 setIntelligence(intelligenceLevelForEnemy);
-                setWeaponsRandomly(weapons);
-                inventoryFighter.add(weapons);
+
 
             }
 
@@ -28,12 +27,9 @@ public class Enemy extends Characters{
                 System.out.println();
                       }
         @Override
-        public int attack(Weapons weapons){
-                for(int i=0; i<Dungeon.EnemyInBattle.size();i++){
-                        if(Dungeon.EnemyInBattle.get(i).getKind()==4){
-                        weapons = Dungeon.EnemyInBattle.get(i).getWeaponsRandomly();
-                }}
-                return weapons.calculateDamageLevel();
+        public int attack(){
+
+                return (int)(Math.random()*10)+1;
         }
 
         public int calculateDamageOfEnemy(){

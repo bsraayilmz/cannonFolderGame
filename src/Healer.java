@@ -41,18 +41,12 @@ public class Healer extends Characters{
                 " \tIntelligence Level: " + intelligenceLevelForHealer +"\t" +"Health point: "+  calculateHealthPoint(strengthLevelForHealer,vitalityLevelForHealer,intelligenceLevelForHealer)+ "\n");
     }
     @Override
-    public double calculateHealthPoint(int strength, int vitality, int intelligence) {
+    public int calculateHealthPoint(int strength, int vitality, int intelligence) {
         super.calculateHealthPoint(strengthLevelForHealer, vitalityLevelForHealer, intelligenceLevelForHealer);
         return healthPoint;
     }
     @Override
-    public int attack(Weapons weapons){
-        for (int i = 0 ; i<Dungeon.EnemyInBattle.size() ; i++){
-            if(Dungeon.EnemyInBattle.get(i).getKind()==3){
-                weapons = Dungeon.EnemyInBattle.get(i).getWeaponsRandomly();
-            }
-        }
-
-        return weapons.calculateDamageLevel();
+    public int attack(){
+        return (int) (super.onHand[0].getDamage()+this.strength);
     }
 }

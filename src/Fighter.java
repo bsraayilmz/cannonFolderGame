@@ -17,7 +17,7 @@ public class Fighter extends Characters{
 
 
     @Override
-    public double calculateHealthPoint(int strength, int vitality, int intelligence) {
+    public int calculateHealthPoint(int strength, int vitality, int intelligence) {
         super.calculateHealthPoint(strengthLevelForFighter, vitalityLevelForFighter, intelligenceLevelForFighter);
         return healthPoint;
     }
@@ -50,13 +50,7 @@ public class Fighter extends Characters{
     }
 
     @Override
-    public int attack(Weapons weapons) {
-        for (int i = 0 ; i<Dungeon.EnemyInBattle.size() ; i++){
-            if(Dungeon.EnemyInBattle.get(i).getKind()==1){
-                weapons = Dungeon.EnemyInBattle.get(i).getWeaponsRandomly();
-            }
-        }
-        return weapons.calculateDamageLevel();
-
+    public int attack() {
+        return (int) (super.onHand[0].getDamage()+this.strength);
     }
 }

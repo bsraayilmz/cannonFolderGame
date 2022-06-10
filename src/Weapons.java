@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class Weapons extends Items{
     SecureRandom secureRandom = new SecureRandom();
     protected String nameWeapon;
-    protected double damageLevel = 1;
+    protected int damage;
 
     protected double moneyWeapon;
 
@@ -119,10 +119,7 @@ public class Weapons extends Items{
        setNameWeapon(nameWeapon);
        setItemWeight(secureRandom.nextInt(1,4));
        setMoneyWeapon(secureRandom.nextInt(1,4));
-    }
-
-    public int calculateDamageLevel(){
-        return (int) damageLevel;
+       setDamage((int) (Math.random()*9)+1);
     }
 
 
@@ -146,12 +143,12 @@ public class Weapons extends Items{
         return nameWeapon;
     }
 
-    public void setDamageLevel(double damageLevel) {
-        this.damageLevel = damageLevel;
+    public void setDamage(int damage) {
+        this.damage = damage;
     }
 
-    public double getDamageLevel() {
-        return damageLevel;
+    public double getDamage() {
+        return damage;
     }
 
 

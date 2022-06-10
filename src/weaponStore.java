@@ -53,9 +53,9 @@ public class weaponStore extends ItemStore {
                 weapons.setNameWeapon("Swords");
                 System.out.println("Your Money: " + characters.getMoneyOfChar());
                 System.out.println("   \tSWORDS TYPE        DAMAGE        WEIGHT        PRICE");
-                System.out.println("1) \tClaymore            " + swords.calculateDamageLevel()+  "              3            30");
-                System.out.println("2) \tSamurai             " + swords.calculateDamageLevel()+ "             5            40");
-                System.out.println("3) \tYataghan            " + swords.calculateDamageLevel()+ "            7            50");
+                System.out.println("1) \tClaymore            " + swords.getDamage()+  "              3            30");
+                System.out.println("2) \tSamurai             " + swords.getDamage()+ "             5            40");
+                System.out.println("3) \tYataghan            " + swords.getDamage()+ "            7            50");
                 System.out.println("4) I don't wanna buy a sword. ");
                 System.out.println();
                 System.out.print("I want to buy:  ");
